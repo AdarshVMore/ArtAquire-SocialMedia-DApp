@@ -1,0 +1,16 @@
+.home {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  gap: 3rem;
+}
+
+.home .divide-line {
+  width: 1px;
+  height: 100vh;
+  background-color: #7c7c7c;
+}
+
+.home .left {
+  width: 20%;
+}
