@@ -5,10 +5,20 @@
   gap: 3rem;
 }
 
+.home .sidebar-home {
+  position: fixed;
+}
+.home .maincontainer-home {
+  position: relative;
+  left: 400px;
+}
+
 .home .divide-line {
   width: 1px;
   height: 100vh;
   background-color: #7c7c7c;
+  position: fixed;
+  left: 350px;
 }
 
 .home .left {
