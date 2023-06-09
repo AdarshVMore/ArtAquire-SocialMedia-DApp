@@ -2,9 +2,13 @@
   display: flex;
   width: 70vw;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
   gap: 2rem;
   padding: 30px 0;
+}
+.profile-nav .left-profile-nav {
+  display: flex;
+  gap: 2rem;
 }
 .profile-nav button {
   padding: 10px 20px;

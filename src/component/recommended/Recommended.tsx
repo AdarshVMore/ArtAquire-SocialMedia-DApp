@@ -18,8 +18,6 @@ function Recommended({ contract, account }) {
 
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [allDesigns, setAllDesigns] = useState([]);
-  console.log(contract);
-  console.log(account);
 
   const demoData = [
     {
@@ -53,8 +51,8 @@ function Recommended({ contract, account }) {
 
   useEffect(() => {
     const getImageFromIPFS = async () => {
-      // await contract.getAllDesigns();
-      //   console.log(designs);
+      const design = await contract.getAllDesigns();
+      console.log(design);
       const cid = "bafkreiduenhjrl7hjgh3lwxr6nvmfv4kzqzzizhzkbydxdabtcjptavzbm";
       try {
         const response = await axios.get(`https://ipfs.io/ipfs/${cid}`);
@@ -82,16 +80,14 @@ function Recommended({ contract, account }) {
             </div>
             <div className="desingn-name">{item.designName}</div>
             <div className="design-img">
-              {imageSrc && (
-                <img
-                  src={item.designInage}
-                  alt="IPFS Image"
-                  onClick={() => {
-                    setPostPopup(true);
-                    setPopupIndex(index);
-                  }}
-                />
-              )}
+              <img
+                src={item.designInage}
+                alt="IPFS Image"
+                onClick={() => {
+                  setPostPopup(true);
+                  setPopupIndex(index);
+                }}
+              />
             </div>
             <div className="bottom">
               <div className="left">
