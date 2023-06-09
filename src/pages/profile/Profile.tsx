@@ -3,6 +3,7 @@ import "./profile.css";
 import { NFTStorage, Blob } from "nft.storage";
 import { AiOutlineHome, AiOutlineMail } from "react-icons/ai";
 import { BiCompass } from "react-icons/bi";
+import { FaRegImage } from "react-icons/fa";
 import ProfileNav from "../../component/profilenav/ProfileNav.tsx";
 import ProfileHome from "../../component/profilehome/ProfileHome.tsx";
 import Analytics from "../../component/analytics/Analytics.tsx";
@@ -92,6 +93,15 @@ function Profile({ contract, account }) {
             >
               <AiOutlineMail size={24} color="white" />
               <p>Community</p>
+            </div>
+            <div
+              className={`recomend each-link ${buttonOn === 3 ? "active" : ""}`}
+              onClick={() => {
+                setButtonOn(3);
+              }}
+            >
+              <FaRegImage size={24} color="white" />
+              <p> My NFTs</p>
             </div>
           </div>
         </div>

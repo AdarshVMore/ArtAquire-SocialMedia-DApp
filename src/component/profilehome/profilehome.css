@@ -1,0 +1,12 @@
+.profile-home {
+  width: 70vw;
+}
+.profile-home .set-profile-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 100px;
+  position: absolute;
+  left: 45%;
+  cursor: pointer;
+  top: 45%;
+}
