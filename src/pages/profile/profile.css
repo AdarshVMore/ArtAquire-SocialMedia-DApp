@@ -1,0 +1,25 @@
+.trial-form {
+  display: none;
+}
+.profile {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  gap: 3rem;
+}
+
+.profile .sidebar-home {
+  position: fixed;
+}
+.profile .maincontainer-home {
+  position: relative;
+  left: 400px;
+}
+
+.profile .divide-line {
+  width: 1px;
+  height: 100vh;
+  background-color: #7c7c7c;
+  position: fixed;
+  left: 350px;
+}

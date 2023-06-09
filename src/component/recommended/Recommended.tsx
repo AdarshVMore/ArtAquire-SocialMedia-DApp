@@ -14,7 +14,7 @@ import "./recommended.css";
 
 function Recommended({ contract, account }) {
   const [postPopup, setPostPopup] = useState(false);
-  const [popupIndex, setPopupIndex] = useState(null);
+  const [popupIndex, setPopupIndex] = useState();
 
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [allDesigns, setAllDesigns] = useState([]);
@@ -75,20 +75,23 @@ function Recommended({ contract, account }) {
     <div className="recommended-designs">
       {demoData.map((item, index) => (
         <React.Fragment key={index}>
-          <div
-            className={`each-design ${postPopup ? `opacity-less` : ``}`}
-            onClick={() => {
-              setPostPopup(true);
-              setPopupIndex(index);
-            }}
-          >
+          <div className={`each-design ${postPopup ? `opacity-less` : ``}`}>
             <div className="top">
               <div className="profile-img"></div>
               <div className="profile-name">{item.creator}</div>
             </div>
             <div className="desingn-name">{item.designName}</div>
             <div className="design-img">
-              {imageSrc && <img src={item.designInage} alt="IPFS Image" />}
+              {imageSrc && (
+                <img
+                  src={item.designInage}
+                  alt="IPFS Image"
+                  onClick={() => {
+                    setPostPopup(true);
+                    setPopupIndex(index);
+                  }}
+                />
+              )}
             </div>
             <div className="bottom">
               <div className="left">

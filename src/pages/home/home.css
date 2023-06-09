@@ -21,6 +21,39 @@
   left: 350px;
 }
 
-.home .left {
-  width: 20%;
+/* =============================================  SIDE BAR  ====================================== */
+
+.sidebar {
+  width: 300px;
+  /* position: fixed; */
+  /* top: 0;
+  left: 0; */
+  color: white;
+  padding: 10px 20px;
+}
+
+.sidebar .logo {
+  margin-bottom: 100px;
+}
+
+.sidebar .links {
+  display: flex;
+
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.sidebar .links .each-link {
+  display: flex;
+  padding: 10px 15px;
+  border-radius: 10px;
+  align-items: flex-end;
+  gap: 1rem;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.sidebar .links .active {
+  background-color: #2a2a2a;
+  transition: 0.3s ease-in-out;
 }
