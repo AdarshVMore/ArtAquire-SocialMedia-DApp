@@ -1,0 +1,30 @@
+.profile-nav {
+  display: flex;
+  width: 70vw;
+  align-items: center;
+  justify-content: right;
+  gap: 2rem;
+  padding: 30px 0;
+}
+.profile-nav button {
+  padding: 10px 20px;
+  border-radius: 100px;
+  color: white;
+  border: none;
+  outline: none;
+}
+.profile-nav .start-streaming-btn {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 45, 98, 1) 0%,
+    rgba(0, 232, 255, 1) 100%
+  );
+}
+.profile-nav .post-design-btn {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 98, 13, 1) 0%,
+    rgb(0, 149, 20) 50%,
+    rgba(14, 255, 0, 1) 100%
+  );
+}
