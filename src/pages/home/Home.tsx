@@ -8,7 +8,7 @@ import Recommended from "../../component/recommended/Recommended.tsx";
 import Trending from "../../component/trending/Trending.tsx";
 import CommunityPost from "../../component/communitypost/CommunityPost.tsx";
 
-function Home({ contract, account }) {
+function Home({ contract, account, provider }) {
   const [buttonOn, setButtonOn] = useState(0);
 
   return (
@@ -54,11 +54,15 @@ function Home({ contract, account }) {
         <div className="divide-line"></div>
         <div className="container right">
           <div className="nav">
-            <HomeNav />
+            <HomeNav contract={contract} account={account} />
           </div>
           <div className="mainContainer">
             {buttonOn === 0 ? (
-              <Recommended contract={contract} account={account} />
+              <Recommended
+                contract={contract}
+                account={account}
+                provider={provider}
+              />
             ) : (
               ""
             )}

@@ -16,14 +16,12 @@ function ProfileHome() {
         {showForm && !profileDone ? (
           <div className="profile-form">
             <div className="heading">Set Profile</div>
-            <div className="profile-img-upload">
-              <input type="file" />
-            </div>
-            <input type="text" ref={nameRef} placeholder="Name" />
-            <input type="text" ref={aboutRef} placeholder="About" />
+
+            <input type="text" ref={nameRef} required placeholder="Name" />
+            <textarea type="text" ref={aboutRef} placeholder="About" rows={5} />
             <input type="text" ref={twitterRef} placeholder="Twitter" />
             <input type="text" ref={linkedInRef} placeholder="LinkedIN" />
-            <input type="text" ref={portfolioLink} placeholder="{Portfolio" />
+            <input type="text" ref={portfolioLink} placeholder="Portfolio" />
             <button>Save</button>
           </div>
         ) : (

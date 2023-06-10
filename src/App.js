@@ -13,7 +13,7 @@ function App() {
   const [provider, setProvider] = useState("");
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-
+    setProvider(provider);
     const loadProvider = async () => {
       if (provider) {
         window.ethereum.on("chainChanged", () => {
@@ -27,7 +27,7 @@ function App() {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
-        let contractAddress = "0xF5598eA7B32160423cF42F0de86Ec5B373237940";
+        let contractAddress = "0x7D96b05D1aFA961335e3510FBE7a454d2B34D911";
 
         const contract = new ethers.Contract(
           contractAddress,
@@ -40,7 +40,11 @@ function App() {
       } else {
         console.error("Metamask is not installed");
       }
+      provider.getCode("0xF5598eA7B32160423cF42F0de86Ec5B373237940");
+      console.log(contract);
     };
+    loadProvider().catch((e) => console.log(e, "is error"));
+
     provider && loadProvider();
   }, []);
 
@@ -50,11 +54,19 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home contract={contract} account={account} />}
+            element={
+              <Home contract={contract} account={account} provider={provider} />
+            }
           />
           <Route
             path="/profile"
-            element={<Profile contract={contract} account={account} />}
+            element={
+              <Profile
+                contract={contract}
+                account={account}
+                provider={provider}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>

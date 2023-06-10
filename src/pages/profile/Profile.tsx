@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./profile.css";
 import { NFTStorage, Blob } from "nft.storage";
 import { AiOutlineHome, AiOutlineMail } from "react-icons/ai";
@@ -8,8 +8,9 @@ import ProfileNav from "../../component/profilenav/ProfileNav.tsx";
 import ProfileHome from "../../component/profilehome/ProfileHome.tsx";
 import Analytics from "../../component/analytics/Analytics.tsx";
 import ProfileCommunityPost from "../../component/profilecomponent/ProfileCommunityPost.tsx";
+import MyNfts from "../../component/mynfts/MyNfts.tsx";
 
-function Profile({ contract, account }) {
+function Profile({ contract, account, provider }) {
   const [buttonOn, setButtonOn] = useState(0);
 
   const [formPopup, setformPopup] = useState(true);
@@ -48,7 +49,7 @@ function Profile({ contract, account }) {
     );
 
     await contract.postDesign(
-      "thumbnail",
+      Thumbnail,
       nameRef.current.value,
       descriptionRef.current.value,
       viewValueRef.current.value,
@@ -58,6 +59,16 @@ function Profile({ contract, account }) {
 
     console.log("done");
   };
+
+  // useEffect(() => {
+  //   const x = async () => {
+  //     console.log(
+  //       await provider.getCode("0xF5598eA7B32160423cF42F0de86Ec5B373237940")
+  //     );
+  //   };
+  //   x();
+  // }, []);
+
   return (
     <div className="profile">
       <div className="sidebar-home left">
@@ -110,7 +121,7 @@ function Profile({ contract, account }) {
         <div className="divide-line"></div>
         <div className="container right">
           <div className="nav">
-            <ProfileNav />
+            <ProfileNav setButtonOn={setButtonOn} />
           </div>
           <div className="mainContainer">
             {buttonOn === 0 ? (
@@ -128,38 +139,73 @@ function Profile({ contract, account }) {
             ) : (
               ""
             )}
+            {buttonOn === 3 ? (
+              <MyNfts contract={contract} account={account} />
+            ) : (
+              ""
+            )}
+            {buttonOn === 4 ? (
+              <div className="postDesign-form">
+                <>
+                  <input
+                    type="file"
+                    className="thumbnail"
+                    onChange={getThumbnail}
+                  />
+                  <input
+                    type="text"
+                    placeholder="name"
+                    ref={nameRef}
+                    className="name"
+                  />
+                  <textarea
+                    placeholder="description"
+                    className="description"
+                    col="15"
+                    ref={descriptionRef}
+                  />
+                  <div className="view-access">
+                    <input
+                      type="text"
+                      className="url"
+                      placeholder="viewUrl"
+                      ref={viewUrlRef}
+                    />
+                    <input
+                      type="number"
+                      placeholder="view Value"
+                      ref={viewValueRef}
+                      className="value"
+                    />
+                  </div>
+                  <div className="edit-access">
+                    <input
+                      type="text"
+                      placeholder="edit Url"
+                      ref={editUrlRef}
+                      className="url"
+                    />
+                    <input
+                      className="value"
+                      type="number"
+                      placeholder="edit value"
+                      ref={editValueRef}
+                    />
+                  </div>
+                  <button
+                    onClick={() => {
+                      postDesign();
+                    }}
+                  >
+                    Post
+                  </button>
+                </>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
-      </div>
-      <div className="trial-form">
-        <button
-          onClick={() => {
-            setformPopup(true);
-          }}
-        >
-          Post Design
-        </button>
-        {formPopup ? (
-          // This code has to be put in PostForm Component and render that component here
-          <>
-            <input type="file" onChange={getThumbnail} />
-            <input type="text" placeholder="name" ref={nameRef} />
-            <input type="text" placeholder="description" ref={descriptionRef} />
-            <input type="text" placeholder="viewUrl" ref={viewUrlRef} />
-            <input type="number" placeholder="view Value" ref={viewValueRef} />
-            <input type="text" placeholder="edit Url" ref={editUrlRef} />
-            <input type="number" placeholder="edit value" ref={editValueRef} />
-            <button
-              onClick={() => {
-                postDesign();
-              }}
-            >
-              Post
-            </button>
-          </>
-        ) : (
-          ""
-        )}
       </div>
     </div>
   );

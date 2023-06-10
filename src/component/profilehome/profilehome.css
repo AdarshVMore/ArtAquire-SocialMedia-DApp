@@ -10,3 +10,40 @@
   cursor: pointer;
   top: 45%;
 }
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.profile-form input,
+.profile-form textarea {
+  /* width: 30%; */
+  resize: none;
+  font-family: poppins;
+  width: 300px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #1d1d1d;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 10px 15px;
+}
+.profile-form textarea {
+  width: 500px;
+}
+.profile-form button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 98, 13, 1) 0%,
+    rgb(0, 149, 20) 50%,
+    rgba(14, 255, 0, 1) 100%
+  );
+  color: white;
+}

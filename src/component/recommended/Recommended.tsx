@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useContext, useState, useEffect } from "react";
+import IPFS from "ipfs-http-client";
 
 import { FcLikePlaceholder } from "react-icons/fc";
 import { BiComment } from "react-icons/bi";
@@ -12,99 +12,72 @@ import img3 from "../../assets/images/original-bee1f9219f261d4e6b069a9b56072369.
 
 import "./recommended.css";
 
-function Recommended({ contract, account }) {
+function Recommended({ contract, account, provider }) {
+  // const ipfs = IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
+
   const [postPopup, setPostPopup] = useState(false);
   const [popupIndex, setPopupIndex] = useState();
 
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [allDesigns, setAllDesigns] = useState([]);
-
-  const demoData = [
-    {
-      creator: "adarsh",
-      designName: "new page",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus adipisci porro quis alias voluptatem ullam.",
-      designInage: img1,
-      viewValue: "2",
-      editValue: "3",
-    },
-    {
-      creator: "adarsh1",
-      designName: "new 2page",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus adipisci porro quis alias voluptatem ullam.",
-      designInage: img2,
-      viewValue: "2",
-      editValue: "3",
-    },
-    {
-      creator: "adarsh2",
-      designName: "new 3page",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus adipisci porro quis alias voluptatem ullam.",
-      designInage: img3,
-      viewValue: "2",
-      editValue: "3",
-    },
-  ];
+  let designs;
 
   useEffect(() => {
-    const getImageFromIPFS = async () => {
-      const design = await contract.getAllDesigns();
-      console.log(design);
-      const cid = "bafkreiduenhjrl7hjgh3lwxr6nvmfv4kzqzzizhzkbydxdabtcjptavzbm";
-      try {
-        const response = await axios.get(`https://ipfs.io/ipfs/${cid}`);
-        if (response.status === 200) {
-          setImageSrc(response.config.url || null);
-        } else {
-          console.error("Failed to fetch image from IPFS:", response.status);
-        }
-      } catch (error) {
-        console.error("Error fetching image from IPFS:", error);
-      }
-    };
+    if (contract) {
+      const getImageFromIPFS = async () => {
+        console.log(contract);
+        console.log(provider);
 
-    getImageFromIPFS();
-  }, []);
+        designs = await contract.getAllDesigns();
+        if (designs) {
+          setAllDesigns(designs);
+
+          console.log(allDesigns);
+          console.log(designs);
+        }
+      };
+
+      getImageFromIPFS();
+    }
+    console.log(allDesigns);
+  }, [contract, designs]);
 
   return (
     <div className="recommended-designs">
-      {demoData.map((item, index) => (
-        <React.Fragment key={index}>
-          <div className={`each-design ${postPopup ? `opacity-less` : ``}`}>
-            <div className="top">
-              <div className="profile-img"></div>
-              <div className="profile-name">{item.creator}</div>
-            </div>
-            <div className="desingn-name">{item.designName}</div>
-            <div className="design-img">
-              <img
-                src={item.designInage}
-                alt="IPFS Image"
-                onClick={() => {
-                  setPostPopup(true);
-                  setPopupIndex(index);
-                }}
-              />
-            </div>
-            <div className="bottom">
-              <div className="left">
-                <FcLikePlaceholder color="white" size={28} />
-                <BiComment size={24} />
+      {allDesigns
+        ? allDesigns.map((item, index) => (
+            <React.Fragment key={index}>
+              <div className={`each-design ${postPopup ? `opacity-less` : ``}`}>
+                <div className="top">
+                  <div className="profile-img"></div>
+                  <div className="profile-name">{item.creator}</div>
+                </div>
+                <div className="desingn-name">{item.name}</div>
+                <div className="design-img">
+                  <img
+                    src={`https:/ipfs.io/ipfs/${item.thumbnail}`}
+                    alt="IPFS Image"
+                    onClick={() => {
+                      setPostPopup(true);
+                      setPopupIndex(index);
+                    }}
+                  />
+                </div>
+                <div className="bottom">
+                  <div className="left">
+                    <FcLikePlaceholder color="white" size={28} />
+                    <BiComment size={24} />
+                  </div>
+                  <div className="right">
+                    <button>
+                      <FaEthereum size={20} /> Own
+                    </button>
+                  </div>
+                </div>
+                <hr />
               </div>
-              <div className="right">
-                <button>
-                  <FaEthereum size={20} /> Own
-                </button>
-              </div>
-            </div>
-            <hr />
-          </div>
-        </React.Fragment>
-      ))}
-
+            </React.Fragment>
+          ))
+        : ""}
       {postPopup ? (
         <>
           <div className="popup-design">
@@ -118,21 +91,21 @@ function Recommended({ contract, account }) {
             </div>
             <div className="left">
               <div className="img">
-                <img src={demoData[popupIndex].designInage} alt="" />
+                <img src={designs[popupIndex].thumbnail} alt="" />
               </div>
               <div className="buy">
                 <div className="heading">Buy</div>
                 <div className="buy-links">
                   <div className="view">
                     <p>View Access</p>
-                    <p>{demoData[popupIndex].viewValue}</p>
+                    {/* <p>{designs[popupIndex].sellValue}</p> */}
                     <button>
                       <FaEthereum size={20} /> Own
                     </button>
                   </div>
                   <div className="edit">
                     <p>Edit Access</p>
-                    <p>{demoData[popupIndex].editValue}</p>
+                    {/* <p>{designs[popupIndex].sellValue}</p> */}
                     <button>
                       <FaEthereum size={20} /> Own
                     </button>
@@ -147,9 +120,7 @@ function Recommended({ contract, account }) {
                   {demoData[popupIndex].creator}
                 </div>
               </div>
-              <div className="desingn-name">
-                {demoData[popupIndex].designName}
-              </div>
+              <div className="desingn-name">{demoData[popupIndex].name}</div>
               <div className="middle">
                 <p>{demoData[popupIndex].description}</p>
               </div>

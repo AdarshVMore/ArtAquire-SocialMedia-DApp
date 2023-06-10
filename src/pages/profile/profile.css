@@ -1,6 +1,3 @@
-.trial-form {
-  display: none;
-}
 .profile {
   display: flex;
   width: 100vw;
@@ -22,4 +19,62 @@
   background-color: #7c7c7c;
   position: fixed;
   left: 350px;
+}
+.postDesign-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  gap: 2rem;
+  margin-top: 50px;
+}
+.postDesign-form input,
+.postDesign-form textarea {
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  background-color: #1d1d1d;
+  color: white;
+  resize: none;
+  font-family: poppins;
+}
+.postDesign-form .thumbnail {
+  border-radius: 10px;
+  display: flex;
+  gap: 1rem;
+}
+.postDesign-form .name {
+  width: 70%;
+}
+.postDesign-form .description {
+  height: 150px;
+}
+.postDesign-form .view-access,
+.postDesign-form .edit-access {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.postDesign-form .url {
+  width: 65%;
+}
+.postDesign-form .value {
+  width: 30%;
+}
+
+.postDesign-form button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 98, 13, 1) 0%,
+    rgb(0, 149, 20) 50%,
+    rgba(14, 255, 0, 1) 100%
+  );
+  width: 100px;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
 }

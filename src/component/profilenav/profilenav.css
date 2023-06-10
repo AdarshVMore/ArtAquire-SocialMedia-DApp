@@ -16,6 +16,7 @@
   color: white;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 .profile-nav .start-streaming-btn {
   background: linear-gradient(

@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsBell } from "react-icons/bs";
 import "./homenav.css";
 import { Link } from "react-router-dom";
 
-function HomeNav() {
+function HomeNav({ contract, account }) {
+  const [isConnected, setIsConnected] = useState(false);
+
+  // if (contract) {
+  //   setIsConnected(true);
+  // }
+
+  const formattedAccount =
+    account.length > 8
+      ? `${account.slice(0, 6)}...${account.slice(-4)}`
+      : account;
+
   return (
     <div className="home-nav">
       <div className="left search-bar">
@@ -12,7 +23,11 @@ function HomeNav() {
       <div className="right">
         <button className="learn-btn">Learn</button>
         <BsBell size={24} color="white" />
-        <button className="connect-wallet-btn">Connect Wallet</button>
+        {/* {isConnected ? (
+          <button className="connect-wallet-btn">Connect Wallet</button>
+        ) : ( */}
+        <p>{formattedAccount}</p>
+        {/* )} */}
         <Link to="/profile">
           <button className="profile-btn"></button>
         </Link>
