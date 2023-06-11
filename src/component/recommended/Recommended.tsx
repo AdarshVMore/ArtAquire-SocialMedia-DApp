@@ -16,7 +16,7 @@ function Recommended({ contract, account, provider }) {
   // const ipfs = IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
   const [postPopup, setPostPopup] = useState(false);
-  const [popupIndex, setPopupIndex] = useState();
+  const [popupIndex, setPopupIndex] = useState(null);
 
   const [allDesigns, setAllDesigns] = useState([]);
   let designs;
@@ -32,7 +32,7 @@ function Recommended({ contract, account, provider }) {
           setAllDesigns(designs);
 
           console.log(allDesigns);
-          console.log(designs);
+          console.log(designs[1].name);
         }
       };
 
@@ -45,40 +45,44 @@ function Recommended({ contract, account, provider }) {
     <div className="recommended-designs">
       {allDesigns
         ? allDesigns.map((item, index) => (
-            <React.Fragment key={index}>
-              <div className={`each-design ${postPopup ? `opacity-less` : ``}`}>
-                <div className="top">
-                  <div className="profile-img"></div>
-                  <div className="profile-name">{item.creator}</div>
-                </div>
-                <div className="desingn-name">{item.name}</div>
-                <div className="design-img">
-                  <img
-                    src={`https:/ipfs.io/ipfs/${item.thumbnail}`}
-                    alt="IPFS Image"
-                    onClick={() => {
-                      setPostPopup(true);
-                      setPopupIndex(index);
-                    }}
-                  />
-                </div>
-                <div className="bottom">
-                  <div className="left">
-                    <FcLikePlaceholder color="white" size={28} />
-                    <BiComment size={24} />
-                  </div>
-                  <div className="right">
-                    <button>
-                      <FaEthereum size={20} /> Own
-                    </button>
-                  </div>
-                </div>
-                <hr />
+            // <React.Fragment key={index}>
+            <div className={`each-design ${postPopup ? `opacity-less` : ``}`}>
+              <div className="top">
+                <div className="profile-img"></div>
+                <div className="profile-name">{item.creator}</div>
               </div>
-            </React.Fragment>
+              <div className="desingn-name">{item.name}</div>
+              <div className="design-img">
+                <img
+                  src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                  alt="IPFS Image"
+                  onClick={() => {
+                    setPopupIndex(index);
+
+                    setPostPopup(true);
+                    {
+                      console.log(postPopup, designs);
+                    }
+                  }}
+                />
+              </div>
+              <div className="bottom">
+                <div className="left">
+                  <FcLikePlaceholder color="white" size={28} />
+                  <BiComment size={24} />
+                </div>
+                <div className="right">
+                  <button>
+                    <FaEthereum size={20} /> Own
+                  </button>
+                </div>
+              </div>
+              <hr />
+            </div>
+            // </React.Fragment>
           ))
         : ""}
-      {postPopup ? (
+      {postPopup && allDesigns ? (
         <>
           <div className="popup-design">
             <div
@@ -91,21 +95,24 @@ function Recommended({ contract, account, provider }) {
             </div>
             <div className="left">
               <div className="img">
-                <img src={designs[popupIndex].thumbnail} alt="" />
+                <img
+                  src={`https://${allDesigns[popupIndex].thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                  alt=""
+                />
               </div>
               <div className="buy">
                 <div className="heading">Buy</div>
                 <div className="buy-links">
                   <div className="view">
                     <p>View Access</p>
-                    {/* <p>{designs[popupIndex].sellValue}</p> */}
+                    <p>{allDesigns[popupIndex].sellValue.toString()}</p>
                     <button>
                       <FaEthereum size={20} /> Own
                     </button>
                   </div>
                   <div className="edit">
                     <p>Edit Access</p>
-                    {/* <p>{designs[popupIndex].sellValue}</p> */}
+                    <span> {allDesigns[popupIndex].sellValue.toString()}</span>
                     <button>
                       <FaEthereum size={20} /> Own
                     </button>
@@ -117,12 +124,12 @@ function Recommended({ contract, account, provider }) {
               <div className="top">
                 <div className="profile-img"></div>
                 <div className="profile-name">
-                  {demoData[popupIndex].creator}
+                  {/* {allDesigns[popupIndex].creator} */}
                 </div>
               </div>
-              <div className="desingn-name">{demoData[popupIndex].name}</div>
+              <div className="desingn-name">{allDesigns[popupIndex].name}</div>
               <div className="middle">
-                <p>{demoData[popupIndex].description}</p>
+                <p>{allDesigns[popupIndex].description}</p>
               </div>
               <div className="botttom">500 likes</div>
             </div>

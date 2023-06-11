@@ -65,11 +65,12 @@
 .recommended-designs .popup-design {
   position: fixed;
   z-index: 5;
-  top: 20vh;
+  top: 15vh;
   /* left: 27vw; */
   display: flex;
-  padding: 20px;
-  background-color: #303030;
+  padding: 30px;
+  background-color: #0d0d0d;
+  border-radius: 15px;
   gap: 2rem;
   width: 67vw;
 }
@@ -89,17 +90,44 @@
 .recommended-designs .popup-design .right {
   font-size: 15px;
   width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .recommended-designs .popup-design .img img {
   width: 100%;
+  max-height: 50vh;
 }
 /* .recommended-designs .popup-design .img {
   width: 600px;
 } */
+.recommended-designs .popup-design .buy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 30px;
+}
 .recommended-designs .popup-design .buy .edit,
 .recommended-designs .popup-design .view {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+.recommended-designs .popup-design .buy .edit span {
+  position: relative;
+  left: 5px;
+}
+.recommended-designs .popup-design .buy button {
+  border-radius: 100px;
+  outline: none;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  gap: 3px;
+  background: linear-gradient(90deg, rgb(0, 72, 10) 0%, rgb(9, 181, 0) 100%);
+  color: white;
 }

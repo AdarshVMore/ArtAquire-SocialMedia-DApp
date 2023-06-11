@@ -24,7 +24,7 @@ function Profile({ contract, account, provider }) {
   const editValueRef = useRef("");
 
   const NFT_STORAGE_TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGY3ODMyQTkyZjgzMzYwRDYyNmQwNkU2MjAzOEM4NDkyNWEyYUIwRDciLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4MDQxNTYxNDg1MywibmFtZSI6Imhvc3BpdGFsLWRhcHAifQ.jwamWRhXby27Er2UsaoxSqikdZRSQSlB39CCR9c4S7Y";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDgxNjQ2ODg5MWM3MjA0MzY3QjUyMTJkNDBCN2MxNDk0ODFhMzBGNDkiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4NjQzMjI2NDM2MywibmFtZSI6IlVYSHViIn0.oAdBKtikXsdRI-k-xyVPjoY2wDWzyjz65rfWTeGO-Ns";
   const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
 
   let thumbnail;
@@ -35,7 +35,7 @@ function Profile({ contract, account, provider }) {
     const someData = new Blob([selectedFile]);
     thumbnail = await client.storeBlob(someData);
     console.log(thumbnail);
-    setThumbnail(thumbnail.toString());
+    setThumbnail(thumbnail);
   };
 
   const postDesign = async () => {

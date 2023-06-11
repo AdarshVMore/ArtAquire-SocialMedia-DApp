@@ -27,7 +27,7 @@ function App() {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
-        let contractAddress = "0x7D96b05D1aFA961335e3510FBE7a454d2B34D911";
+        let contractAddress = "0xD9DfeF6a5E432D69Fe701b5e0489a90D683c295E";
 
         const contract = new ethers.Contract(
           contractAddress,
@@ -40,7 +40,6 @@ function App() {
       } else {
         console.error("Metamask is not installed");
       }
-      provider.getCode("0xF5598eA7B32160423cF42F0de86Ec5B373237940");
       console.log(contract);
     };
     loadProvider().catch((e) => console.log(e, "is error"));
