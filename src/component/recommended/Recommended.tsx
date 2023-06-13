@@ -32,7 +32,7 @@ function Recommended({ contract, account, provider }) {
           setAllDesigns(designs);
 
           console.log(allDesigns);
-          console.log(designs[1].name);
+          console.log(designs);
         }
       };
 
@@ -105,14 +105,17 @@ function Recommended({ contract, account, provider }) {
                 <div className="buy-links">
                   <div className="view">
                     <p>View Access</p>
-                    <p>{allDesigns[popupIndex].sellValue.toString()}</p>
+                    <p>{allDesigns[popupIndex].sellValue.toString()} ETH</p>
                     <button>
                       <FaEthereum size={20} /> Own
                     </button>
                   </div>
                   <div className="edit">
                     <p>Edit Access</p>
-                    <span> {allDesigns[popupIndex].sellValue.toString()}</span>
+                    <span>
+                      {" "}
+                      {allDesigns[popupIndex].sellValue.toString()} ETH
+                    </span>
                     <button>
                       <FaEthereum size={20} /> Own
                     </button>

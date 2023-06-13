@@ -11,7 +11,7 @@
   width: auto;
 }
 .opacity-less {
-  opacity: 0.1;
+  opacity: 0.3;
 }
 .each-design .top {
   display: flex;
@@ -58,8 +58,9 @@
 }
 
 .recommended-designs hr {
-  width: 420px;
-  opacity: 25%;
+  margin-top: 15px;
+  width: 450px;
+  opacity: 15%;
 }
 
 .recommended-designs .popup-design {
@@ -67,12 +68,15 @@
   z-index: 5;
   top: 15vh;
   /* left: 27vw; */
+  /* transform: translateX(15px); */
   display: flex;
   padding: 30px;
-  background-color: #0d0d0d;
+  backdrop-filter: blur(10px);
+  background: rgba(84, 84, 84, 0.1);
   border-radius: 15px;
   gap: 2rem;
   width: 67vw;
+  border: 0.5px solid rgba(255, 255, 255, 0.323);
 }
 
 .recommended-designs .popup-design .close {
