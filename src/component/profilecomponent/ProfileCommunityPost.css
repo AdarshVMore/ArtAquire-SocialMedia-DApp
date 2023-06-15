@@ -1,0 +1,71 @@
+.profile-disp {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.profile-btn {
+    width: 30px;
+    height: 30px;
+    background-color: gray;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.input-text {
+    padding-top: 15px;
+}
+
+.post-text {
+    background-color: black;
+    color: white;
+    width: 40%;
+    height: 15vh;
+    border: 1px solid rgb(110, 97, 97);
+    padding-left: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.post {
+    width: 30%;
+    padding-top: 15px;
+    word-wrap: normal;
+}
+
+.interact {
+    padding-top: 25px;
+    display: flex;
+    width: 5%;
+    justify-content: space-between;
+}
+
+.post-section {
+    padding-top: 25px;
+}
+
+.bottom-line {
+    border-bottom: 1px solid rgb(90, 87, 87);
+    padding-top: 25px;
+    width: 40%;
+}
+
+.post-btn {
+    position: fixed;
+    width: 80px;
+    height: 40px;
+    border-radius: 50px;
+    top: 675px;
+    left: 1410px;
+    background-color: rgb(115, 115, 117);
+    color: white;
+    font-weight: bolder;
+
+}
+
+textarea {
+    resize: none;
+    outline: none;
+}
