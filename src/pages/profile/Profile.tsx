@@ -34,6 +34,7 @@ function Profile({ contract, account, provider }) {
 
   const getThumbnail = async (e) => {
     const file = e.target.files[0];
+    console.log(e.target.files);
     setSelectedFile(file);
     const someData = new Blob([selectedFile]);
     thumbnail = await client.storeBlob(someData);
