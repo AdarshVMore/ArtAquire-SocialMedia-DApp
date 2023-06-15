@@ -1,0 +1,84 @@
+.mynfts {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.each-nft img {
+  width: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+
+.mynfts .popup-design {
+  position: absolute;
+  z-index: 5;
+  top: 12vh;
+  /* left: 27vw; */
+  /* transform: translateX(15px); */
+  display: flex;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  background: rgba(84, 84, 84, 0.1);
+  border-radius: 15px;
+  gap: 2rem;
+  width: 67vw;
+  border: 0.5px solid rgba(255, 255, 255, 0.323);
+}
+
+.mynfts .popup-design .close {
+  position: absolute;
+  z-index: 10;
+  top: 20px;
+  right: 20px;
+  fill: white;
+  cursor: pointer;
+}
+
+.mynfts .popup-design .left {
+  width: 60%;
+}
+.mynfts .popup-design .right {
+  font-size: 15px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mynfts .popup-design .img img {
+  width: 100%;
+  max-height: 50vh;
+}
+/* .mynfts .popup-design .img {
+    width: 600px;
+  } */
+.mynfts .popup-design .buy {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 30px;
+}
+.mynfts .popup-design .buy .edit,
+.mynfts .popup-design .view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.mynfts .popup-design .buy button {
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  gap: 3px;
+  background: linear-gradient(90deg, rgb(0, 72, 10) 0%, rgb(9, 181, 0) 100%);
+  color: white;
+}
+.mynfts .popup-design .buy button a {
+  color: white;
+  text-decoration: none;
+}

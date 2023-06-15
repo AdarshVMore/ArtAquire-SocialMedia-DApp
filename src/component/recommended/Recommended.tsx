@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import IPFS from "ipfs-http-client";
+import { ethers } from "ethers";
 
 import { FcLikePlaceholder } from "react-icons/fc";
 import { BiComment } from "react-icons/bi";
@@ -13,13 +14,34 @@ import img3 from "../../assets/images/original-bee1f9219f261d4e6b069a9b56072369.
 import "./recommended.css";
 
 function Recommended({ contract, account, provider }) {
-  // const ipfs = IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-
   const [postPopup, setPostPopup] = useState(false);
   const [popupIndex, setPopupIndex] = useState(null);
 
   const [allDesigns, setAllDesigns] = useState([]);
+  const [allFiles, setAllFiles] = useState([]);
+  const soldFiles = [];
   let designs;
+  let addedfiles = [];
+  console.log(soldFiles);
+
+  const getAddedFiles = async (cid) => {
+    addedfiles = await contract.getAddedFiles(cid);
+    console.log(addedfiles);
+    setAllFiles(addedfiles);
+  };
+
+  const buyFile = async (cid, index) => {
+    const value = await allFiles[index].fileValue.toNumber();
+    const overrides = {
+      value: ethers.utils.parseEther(value.toString()),
+    };
+    console.log(cid, index, { value: value });
+    await contract.buyDesign(cid, index, overrides);
+    console.log("file Bought");
+    console.log(cid, index);
+    const sold = { cid: cid, index: index };
+    soldFiles.push(sold);
+  };
 
   useEffect(() => {
     if (contract) {
@@ -28,11 +50,11 @@ function Recommended({ contract, account, provider }) {
         console.log(provider);
 
         designs = await contract.getAllDesigns();
+        console.log(designs);
         if (designs) {
           setAllDesigns(designs);
 
           console.log(allDesigns);
-          console.log(designs[1].name);
         }
       };
 
@@ -52,19 +74,43 @@ function Recommended({ contract, account, provider }) {
                 <div className="profile-name">{item.creator}</div>
               </div>
               <div className="desingn-name">{item.name}</div>
-              <div className="design-img">
-                <img
-                  src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
-                  alt="IPFS Image"
-                  onClick={() => {
-                    setPopupIndex(index);
+              <div
+                className="design-img"
+                onClick={async () => {
+                  await getAddedFiles(item.thumbnail);
 
-                    setPostPopup(true);
-                    {
-                      console.log(postPopup, designs);
-                    }
-                  }}
-                />
+                  setPopupIndex(index);
+                  setPostPopup(true);
+                  {
+                    console.log(postPopup, designs);
+                    console.log(addedfiles);
+                  }
+                }}
+              >
+                {item.PostType === "image" ? (
+                  <img
+                    src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                    alt="IPFS Image"
+                  />
+                ) : null}
+
+                {item.PostType === "audio" ? (
+                  <audio controls>
+                    <source
+                      src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                      type="audio/mpeg"
+                    />
+                  </audio>
+                ) : null}
+
+                {item.PostType === "video" ? (
+                  <video controls>
+                    <source
+                      src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                      type="video/mp4"
+                    />
+                  </video>
+                ) : null}
               </div>
               <div className="bottom">
                 <div className="left">
@@ -95,29 +141,46 @@ function Recommended({ contract, account, provider }) {
             </div>
             <div className="left">
               <div className="img">
-                <img
-                  src={`https://${allDesigns[popupIndex].thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
-                  alt=""
-                />
+                {allDesigns[popupIndex].PostType === "image" ? (
+                  <img
+                    src={`https://${allDesigns[popupIndex].thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                    alt=""
+                  />
+                ) : null}
+                {allDesigns[popupIndex].PostType === "audio" ? (
+                  <audio controls>
+                    <source
+                      src={`https://${allDesigns[popupIndex].thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                      type="audio/mpeg"
+                    />
+                  </audio>
+                ) : null}
+                {allDesigns[popupIndex].PostType === "video" ? (
+                  <video controls>
+                    <source
+                      src={`https://${allDesigns[popupIndex].thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                      type="video/mp4"
+                    />
+                  </video>
+                ) : null}
               </div>
               <div className="buy">
                 <div className="heading">Buy</div>
-                <div className="buy-links">
-                  <div className="view">
-                    <p>View Access</p>
-                    <p>{allDesigns[popupIndex].sellValue.toString()}</p>
-                    <button>
-                      <FaEthereum size={20} /> Own
-                    </button>
+                {allFiles.map((item, index) => (
+                  <div className="buy-links">
+                    <div className="view">
+                      <p>{item.fileName}</p>
+                      <p>{item.fileValue.toNumber()} ETH</p>
+                      <button
+                        onClick={() => {
+                          buyFile(allDesigns[popupIndex].thumbnail, index);
+                        }}
+                      >
+                        <FaEthereum size={20} /> Own
+                      </button>
+                    </div>
                   </div>
-                  <div className="edit">
-                    <p>Edit Access</p>
-                    <span> {allDesigns[popupIndex].sellValue.toString()}</span>
-                    <button>
-                      <FaEthereum size={20} /> Own
-                    </button>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div className="right">

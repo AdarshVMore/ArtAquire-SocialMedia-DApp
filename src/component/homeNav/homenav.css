@@ -2,16 +2,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 70%;
+  width: 75%;
   /* padding: 0 50px; */
   padding: 30px 50px;
   transform: translateX(-48px);
   position: fixed;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.1);
   margin: 0;
-  opacity: 0.9;
+  /* opacity: 0.9; */
   top: 0;
+  border-bottom: 0.5px solid rgba(64, 64, 64, 0.494);
 }
 
 .home-nav .left input {
@@ -21,6 +22,7 @@
   border: 1px solid gray;
   outline: none;
   background-color: transparent;
+  color: white;
 }
 
 .home-nav .right {

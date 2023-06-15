@@ -25,6 +25,9 @@
   margin-right: 20px;
 }
 
+.each-design .design-img {
+  cursor: pointer;
+}
 .each-design .design-img img {
   width: 400px;
   /* height: 400px; */
@@ -65,14 +68,17 @@
 .recommended-designs .popup-design {
   position: fixed;
   z-index: 5;
-  top: 15vh;
+  top: 25vh;
   /* left: 27vw; */
+  /* transform: translateX(15px); */
   display: flex;
   padding: 30px;
-  background-color: #0d0d0d;
+  backdrop-filter: blur(10px);
+  background: rgba(84, 84, 84, 0.1);
   border-radius: 15px;
   gap: 2rem;
   width: 67vw;
+  border: 0.5px solid rgba(255, 255, 255, 0.323);
 }
 
 .recommended-designs .popup-design .close {
@@ -93,6 +99,10 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.recommended-designs .popup-design .img {
+  cursor: pointer;
 }
 
 .recommended-designs .popup-design .img img {

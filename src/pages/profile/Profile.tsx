@@ -4,6 +4,7 @@ import { NFTStorage, Blob } from "nft.storage";
 import { AiOutlineHome, AiOutlineMail } from "react-icons/ai";
 import { BiCompass } from "react-icons/bi";
 import { FaRegImage } from "react-icons/fa";
+import { IoIosAdd, IoMdRemove } from "react-icons/io";
 import ProfileNav from "../../component/profilenav/ProfileNav.tsx";
 import ProfileHome from "../../component/profilehome/ProfileHome.tsx";
 import Analytics from "../../component/analytics/Analytics.tsx";
@@ -12,16 +13,18 @@ import MyNfts from "../../component/mynfts/MyNfts.tsx";
 
 function Profile({ contract, account, provider }) {
   const [buttonOn, setButtonOn] = useState(0);
+  let noOfFiles = 1;
 
   const [formPopup, setformPopup] = useState(true);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile2, setSelectedFile2] = useState(null);
   const [Thumbnail, setThumbnail] = useState(null);
+  const [FiletoBuy, setFileToBuy] = useState(null);
   const nameRef = useRef("");
   const descriptionRef = useRef("");
-  const viewUrlRef = useRef("");
-  const viewValueRef = useRef("");
-  const editUrlRef = useRef("");
-  const editValueRef = useRef("");
+  const fileNameRef = useRef("");
+  const fileValueRef = useRef("");
+  const urlRef = useRef("");
 
   const NFT_STORAGE_TOKEN =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDgxNjQ2ODg5MWM3MjA0MzY3QjUyMTJkNDBCN2MxNDk0ODFhMzBGNDkiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4NjQzMjI2NDM2MywibmFtZSI6IlVYSHViIn0.oAdBKtikXsdRI-k-xyVPjoY2wDWzyjz65rfWTeGO-Ns";
@@ -38,36 +41,61 @@ function Profile({ contract, account, provider }) {
     setThumbnail(thumbnail);
   };
 
-  const postDesign = async () => {
+  let fileToBuy;
+
+  const handleFileSelection = async (e) => {
+    const file = e.target.files[0];
+    setSelectedFile2(file);
+    const someData = new Blob([selectedFile2]);
+    fileToBuy = await client.storeBlob(someData);
+    console.log(fileToBuy);
+    setFileToBuy(fileToBuy);
+  };
+
+  const [selectedValue, setSelectedValue] = useState("image");
+
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  const addFile = async () => {
     console.log(
       Thumbnail,
+      fileNameRef.current.value,
+      fileValueRef.current.value,
+      FiletoBuy
+    );
+    await contract.addFiles(
+      Thumbnail,
+      fileNameRef.current.value,
+      fileValueRef.current.value,
+      FiletoBuy
+    );
+  };
+
+  const postDesign = async () => {
+    console.log(
+      selectedValue,
+      Thumbnail,
       nameRef.current.value,
-      descriptionRef.current.value,
-      viewValueRef.current.value,
-      viewUrlRef.current.value,
-      editUrlRef.current.value
+      descriptionRef.current.value
     );
 
     await contract.postDesign(
+      selectedValue,
       Thumbnail,
       nameRef.current.value,
-      descriptionRef.current.value,
-      viewValueRef.current.value,
-      viewUrlRef.current.value,
-      editUrlRef.current.value
+      descriptionRef.current.value
     );
 
     console.log("done");
   };
 
-  // useEffect(() => {
-  //   const x = async () => {
-  //     console.log(
-  //       await provider.getCode("0xF5598eA7B32160423cF42F0de86Ec5B373237940")
-  //     );
-  //   };
-  //   x();
-  // }, []);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked); // Toggle the checkbox state
+  };
 
   return (
     <div className="profile">
@@ -75,7 +103,7 @@ function Profile({ contract, account, provider }) {
         {/* <Sidebar /> */}
         <div className="sidebar">
           <div className="logo">
-            <h1>uXHub</h1>
+            <h1>ArtAquire</h1>
           </div>
           <div className="links">
             <div
@@ -147,11 +175,18 @@ function Profile({ contract, account, provider }) {
             {buttonOn === 4 ? (
               <div className="postDesign-form">
                 <>
-                  <input
-                    type="file"
-                    className="thumbnail"
-                    onChange={getThumbnail}
-                  />
+                  <div className="top">
+                    <input
+                      type="file"
+                      className="thumbnail"
+                      onChange={getThumbnail}
+                    />
+                    <select value={selectedValue} onChange={handleSelectChange}>
+                      <option value="image">Image</option>
+                      <option value="audio">Audio</option>
+                      <option value="video">Video</option>
+                    </select>
+                  </div>
                   <input
                     type="text"
                     placeholder="name"
@@ -164,38 +199,65 @@ function Profile({ contract, account, provider }) {
                     col="15"
                     ref={descriptionRef}
                   />
-                  <div className="view-access">
-                    <input
-                      type="text"
-                      className="url"
-                      placeholder="viewUrl"
-                      ref={viewUrlRef}
-                    />
-                    <input
-                      type="number"
-                      placeholder="view Value"
-                      ref={viewValueRef}
-                      className="value"
-                    />
+                  <div className="add-files-top">
+                    <p>Add Files</p>
                   </div>
-                  <div className="edit-access">
-                    <input
-                      type="text"
-                      placeholder="edit Url"
-                      ref={editUrlRef}
-                      className="url"
-                    />
-                    <input
-                      className="value"
-                      type="number"
-                      placeholder="edit value"
-                      ref={editValueRef}
-                    />
+                  <div className="all-file-inputs">
+                    <div className="each-file">
+                      <div className="edit-access">
+                        <input
+                          type="text"
+                          placeholder="File Name"
+                          ref={fileNameRef}
+                          className="url"
+                        />
+                        <div className="value-input">
+                          <input type="number" ref={fileValueRef} />
+                          <p> ETH</p>
+                        </div>
+                      </div>
+                      <div className="file-type">
+                        <input
+                          type="file"
+                          placeholder="File Name"
+                          className="url"
+                          onChange={handleFileSelection}
+                        />
+                        OR
+                        <input
+                          type="text"
+                          placeholder="File Url"
+                          ref={urlRef}
+                        />
+                      </div>
+                    </div>
                   </div>
+
+                  <button
+                    className={`add-file-btn ${isChecked ? "" : "checked"}`}
+                    disabled={isChecked}
+                    onClick={() => {
+                      addFile();
+                    }}
+                  >
+                    Add File
+                  </button>
+
+                  <div className="checkbox">
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
+                    <p>All Files Uploaded I am ready to post the Art</p>
+                  </div>
+
                   <button
                     onClick={() => {
                       postDesign();
                     }}
+                    className={`post-design-btn ${isChecked ? "checked" : ""}`}
+                    disabled={!isChecked}
                   >
                     Post
                   </button>

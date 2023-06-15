@@ -26,7 +26,8 @@
   justify-content: center;
   width: 50%;
   gap: 2rem;
-  margin-top: 50px;
+  margin-top: 60px;
+  margin-bottom: 100px;
 }
 .postDesign-form input,
 .postDesign-form textarea {
@@ -39,31 +40,84 @@
   resize: none;
   font-family: poppins;
 }
+.postDesign-form .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .postDesign-form .thumbnail {
   border-radius: 10px;
   display: flex;
   gap: 1rem;
 }
+
+.postDesign-form .top select {
+  padding: 13px;
+  background-color: #242424;
+  border: none;
+  color: white;
+  outline: none;
+  width: 100px;
+  border-radius: 10px;
+}
 .postDesign-form .name {
-  width: 70%;
+  width: 100%;
 }
 .postDesign-form .description {
   height: 150px;
 }
+
+.postDesign-form .each-file {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.postDesign-form .add-files-top .add-files-btn {
+  /* padding: 10px; */
+  background-color: #242424;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .postDesign-form .view-access,
 .postDesign-form .edit-access {
   display: flex;
   align-items: center;
+  gap: 1rem;
   justify-content: space-between;
 }
-.postDesign-form .url {
-  width: 65%;
+.postDesign-form .value-input {
+  width: 45%;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  background-color: #1d1d1d;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.postDesign-form .value-input p {
+  margin: 0 20px;
 }
 .postDesign-form .value {
-  width: 30%;
+  width: 70%;
 }
-
-.postDesign-form button {
+.postDesign-form .each-file .file-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.postDesign-form .each-file .file {
+  width: 45%;
+}
+.postDesign-form .add-file-btn {
   padding: 10px 20px;
   border: none;
   outline: none;
@@ -73,8 +127,33 @@
     rgb(0, 149, 20) 50%,
     rgba(14, 255, 0, 1) 100%
   );
-  width: 100px;
+  width: 150px;
   color: white;
   font-weight: 600;
   border-radius: 10px;
+}
+
+.postDesign-form .checkbox {
+  display: flex;
+  gap: 1rem;
+}
+
+.postDesign-form .post-design-btn {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 98, 13, 1) 0%,
+    rgb(0, 149, 20) 50%,
+    rgba(14, 255, 0, 1) 100%
+  );
+  width: 150px;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+.postDesign-form .checked {
+  opacity: 1;
 }

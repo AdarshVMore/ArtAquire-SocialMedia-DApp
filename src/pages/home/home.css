@@ -58,6 +58,7 @@
 }
 
 .sidebar .links .active {
-  background-color: #1a1a1a;
+  background-color: #1a1a1a87;
+  border: 1px solid rgba(255, 255, 255, 0.114);
   transition: 0.3s ease-in-out;
 }

@@ -17,7 +17,7 @@ function Home({ contract, account, provider }) {
         {/* <Sidebar /> */}
         <div className="sidebar">
           <div className="logo">
-            <h1>uXHub</h1>
+            <h1>ArtAquire</h1>
           </div>
           <div className="links">
             <div
