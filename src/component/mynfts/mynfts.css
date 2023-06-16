@@ -1,11 +1,28 @@
 .mynfts {
-  display: grid;
-  grid-template-columns: auto auto auto;
+  /* display: grid;
+  grid-template-columns: auto auto auto; */
+  cursor: pointer;
+  /* width: 450px; */
+  /* height: auto;*/
+  display: flex;
+  flex-wrap: wrap;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
-.each-nft img {
-  width: 300px;
-  object-fit: cover;
+.each-nft img,
+.each-nft video,
+.each-nft audio {
+  /* width: 300px; */
+
+  align-items: center;
+  justify-content: center;
+  height: 170px;
   border-radius: 15px;
   margin-bottom: 25px;
 }

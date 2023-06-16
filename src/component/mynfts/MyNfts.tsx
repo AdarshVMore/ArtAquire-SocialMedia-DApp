@@ -31,6 +31,10 @@ function MyNfts({ contract, account }) {
             <img
               src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
               alt="IPFS Image"
+              onClick={() => {
+                setPopupIndex(index);
+                setPostPopup(true);
+              }}
             />
           ) : null}
 
@@ -39,12 +43,22 @@ function MyNfts({ contract, account }) {
               <source
                 src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
                 type="audio/mpeg"
+                onClick={() => {
+                  setPopupIndex(index);
+                  setPostPopup(true);
+                }}
               />
             </audio>
           ) : null}
 
           {item.PostType === "video" ? (
-            <video controls>
+            <video
+              controls
+              onClick={() => {
+                setPopupIndex(index);
+                setPostPopup(true);
+              }}
+            >
               <source
                 src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
                 type="video/mp4"

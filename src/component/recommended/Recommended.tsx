@@ -91,6 +91,16 @@ function Recommended({ contract, account, provider }) {
                   <img
                     src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
                     alt="IPFS Image"
+                    onClick={async () => {
+                      await getAddedFiles(item.thumbnail);
+
+                      setPopupIndex(index);
+                      setPostPopup(true);
+                      {
+                        console.log(postPopup, designs);
+                        console.log(addedfiles);
+                      }
+                    }}
                   />
                 ) : null}
 
@@ -99,12 +109,34 @@ function Recommended({ contract, account, provider }) {
                     <source
                       src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
                       type="audio/mpeg"
+                      onClick={async () => {
+                        await getAddedFiles(item.thumbnail);
+
+                        setPopupIndex(index);
+                        setPostPopup(true);
+                        {
+                          console.log(postPopup, designs);
+                          console.log(addedfiles);
+                        }
+                      }}
                     />
                   </audio>
                 ) : null}
 
                 {item.PostType === "video" ? (
-                  <video controls>
+                  <video
+                    controls
+                    onClick={async () => {
+                      await getAddedFiles(item.thumbnail);
+
+                      setPopupIndex(index);
+                      setPostPopup(true);
+                      {
+                        console.log(postPopup, designs);
+                        console.log(addedfiles);
+                      }
+                    }}
+                  >
                     <source
                       src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
                       type="video/mp4"

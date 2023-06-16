@@ -21,7 +21,7 @@ function HomeNav({ contract, account }) {
         <input type="text" placeholder="Search for Design" />
       </div>
       <div className="right">
-        <button className="learn-btn">Learn</button>
+        {/* <button className="learn-btn">Learn</button> */}
         <BsBell size={24} color="white" />
         {/* {isConnected ? (
           <button className="connect-wallet-btn">Connect Wallet</button>

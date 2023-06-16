@@ -27,9 +27,16 @@
 
 .each-design .design-img {
   cursor: pointer;
+  width: 450px;
+  height: auto;
+  background-size: cover;
+  background-position: center;
 }
-.each-design .design-img img {
-  width: 400px;
+.each-design .design-img img,
+.each-design .design-img video,
+.each-design .design-img audio {
+  width: 100%;
+  /* background-size: contain; */
   /* height: 400px; */
   border-radius: 15px;
   margin-top: 20px;
@@ -69,7 +76,7 @@
 .recommended-designs .popup-design {
   position: fixed;
   z-index: 5;
-  top: 25vh;
+  top: 18vh;
   /* left: 27vw; */
   /* transform: translateX(15px); */
   display: flex;
@@ -103,6 +110,20 @@
 }
 
 .recommended-designs .popup-design .img {
+  cursor: pointer;
+  width: 450px;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+}
+.popup-design .img img,
+.popup-design .img video,
+.popup-design .img audio {
+  width: 100%;
+  /* background-size: contain; */
+  /* height: 400px; */
+  border-radius: 15px;
+  margin-top: 20px;
   cursor: pointer;
 }
 
