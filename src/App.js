@@ -6,6 +6,7 @@ import { ethers } from "ethers";
 
 import Home from "./pages/home/Home.tsx";
 import Profile from "./pages/profile/Profile.tsx";
+import LandingPage from "./pages/landing/LandingPage.tsx";
 
 function App() {
   const [account, setAccount] = useState("");
@@ -52,6 +53,16 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route
+            path="/landing"
+            element={
+              <LandingPage
+              // contract={contract}
+              // account={account}
+              // provider={provider}
+              />
+            }
+          />
           <Route
             path="/"
             element={
