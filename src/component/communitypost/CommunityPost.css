@@ -1,55 +1,41 @@
-.profile-disp {
-    display: flex;
-    justify-content: space-between;
-    width: 15%;
-    align-items: center;
-    margin-top: 50px;
+.community-post {
+  margin-top: 150px;
+  width: 100vh;
 }
 
-.profile-btn {
-    width: 30px;
-    height: 30px;
-    background-color: gray;
-    cursor: pointer;
-    border-radius: 15px;
+.community-post .posts {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  width: 70%;
+}
+.community-post .posts .each-post {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.community-post .posts .each-post .profile-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: gray;
+}
+.top-community-post {
+  display: flex;
+  gap: 1rem;
+}
+.top-community-post p {
+  font-weight: 500;
+}
+.post-text {
+  font-size: 16px;
+}
+.bottom-community-post {
+  display: flex;
+  gap: 1rem;
 }
 
-.post {
-    width: 30%;
-    padding-top: 15px;
-    word-wrap: normal;
-}
-
-.interact {
-    padding-top: 25px;
-    display: flex;
-    width: 5%;
-    justify-content: space-between;
-}
-
-.post-section {
-    padding-top: 15px;
-}
-
-.bottom-line {
-    border-bottom: 1px solid rgb(90, 87, 87);
-    padding-top: 25px;
-    width: 40%;
-}
-
-.post-btn {
-    position: fixed;
-    width: 80px;
-    height: 40px;
-    border-radius: 50px;
-    top: 675px;
-    left: 1410px;
-    background-color: rgb(115, 115, 117);
-    color: white;
-    font-weight: bolder;
-
-}
-
-.posts {
-    margin-top: 50px;
+.community-post hr {
+  opacity: 20%;
+  margin: 20px 0;
 }

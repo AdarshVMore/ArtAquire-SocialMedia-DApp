@@ -19,9 +19,15 @@ function Recommended({ contract, account, provider }) {
   const [postPopup, setPostPopup] = useState(false);
   const [popupIndex, setPopupIndex] = useState(null);
   const [isActive, setActive] = useState(0);
+  const [isFollowed, setIsFollowed] = useState(false);
 
   const [allDesigns, setAllDesigns] = useState([]);
   const [allFiles, setAllFiles] = useState([]);
+
+  const [userInfo, setUserInfo] = useState();
+
+  let propertyInfo;
+  const [myProfile, setMyProfile] = useState();
   const soldFiles = [];
   let designs;
   let addedfiles = [];
@@ -89,11 +95,6 @@ function Recommended({ contract, account, provider }) {
     console.log(allDesigns);
   }, [contract, designs, isActive]);
 
-  const [userInfo, setUserInfo] = useState();
-
-  let propertyInfo;
-  const [myProfile, setMyProfile] = useState();
-
   const viewProfile = async (param) => {
     for (let i = 0; i < userInfo.length; i++) {
       if (userInfo[i].publicKey === param) {
@@ -111,7 +112,6 @@ function Recommended({ contract, account, provider }) {
       }
     }
   };
-  const [isFollowed, setIsFollowed] = useState(false);
 
   const addFollower = async () => {
     await db
@@ -383,8 +383,8 @@ function Recommended({ contract, account, provider }) {
             <div className="text">
               <div className="profile-top">
                 <p className="artist-name">{myProfile.name}</p>
-                <button onClick={addFollower} disabled={!isFollowed}>
-                  {isFollowed ? "Follow" : "Followed"}
+                <button onClick={addFollower} disabled={isFollowed}>
+                  {isFollowed ? "Followed" : "Follow"}
                 </button>
               </div>
               <p className="artist-about">{myProfile.about}</p>

@@ -1,71 +1,70 @@
-.profile-disp {
-    display: flex;
-    justify-content: space-between;
-    width: 15%;
-    align-items: center;
-    margin-top: 50px;
+.input-section .btn {
+  /* position: fixed; */
+  border-radius: 10px;
+  padding: 7px 20px;
+  background-color: rgb(115, 115, 117);
+  color: white;
+  font-weight: 500;
+  border: none;
+  text-align: center;
+  width: 100px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 60px 0;
 }
 
-.profile-btn {
-    width: 30px;
-    height: 30px;
-    background-color: gray;
-    cursor: pointer;
-    border-radius: 15px;
+form .post-text {
+  resize: none;
+  color: white;
+  outline: none;
+  height: 200px;
+  padding: 10px 20px;
+  font-family: poppins;
+  background-color: transparent;
+  width: 550px;
+  border-radius: 15px;
+  margin-bottom: 15px;
 }
 
-.input-text {
-    padding-top: 15px;
+.profile-post {
+  width: 100vh;
 }
 
+.profile-post .posts {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  width: 70%;
+}
+.profile-post .posts .each-post {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.profile-post .profile-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: gray;
+}
+.top-community-post {
+  display: flex;
+  gap: 1rem;
+}
+.top-community-post p {
+  font-weight: 500;
+}
 .post-text {
-    background-color: black;
-    color: white;
-    width: 40%;
-    height: 15vh;
-    border: 1px solid rgb(110, 97, 97);
-    padding-left: 5px;
-    border-radius: 5px;
-    overflow: hidden;
+  font-size: 16px;
+}
+.bottom-community-post {
+  display: flex;
+  gap: 1rem;
 }
 
-.post {
-    width: 30%;
-    padding-top: 15px;
-    word-wrap: normal;
-}
-
-.interact {
-    padding-top: 25px;
-    display: flex;
-    width: 5%;
-    justify-content: space-between;
-}
-
-.post-section {
-    padding-top: 25px;
-}
-
-.bottom-line {
-    border-bottom: 1px solid rgb(90, 87, 87);
-    padding-top: 25px;
-    width: 40%;
-}
-
-.post-btn {
-    position: fixed;
-    width: 80px;
-    height: 40px;
-    border-radius: 50px;
-    top: 675px;
-    left: 1410px;
-    background-color: rgb(115, 115, 117);
-    color: white;
-    font-weight: bolder;
-
-}
-
-textarea {
-    resize: none;
-    outline: none;
+.profile-post hr {
+  opacity: 20%;
+  margin: 20px 0;
 }

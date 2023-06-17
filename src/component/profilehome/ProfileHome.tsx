@@ -55,9 +55,21 @@ function ProfileHome({ contract, account }) {
 
         if (propertyInfo.data[i].data.publicKey === account) {
           console.log(propertyInfo.data[i].data);
-          setMyProfile(propertyInfo.data[i].data);
+          const x = propertyInfo.data[i].data;
+          setMyProfile(x);
           console.log(myProfile);
           setProfileDone(true);
+          const followers = x.followerName;
+          console.log(followers);
+          if (followers) {
+            for (let i = 0; i < followers.length; i++) {
+              if (followers[i] === account) {
+                setIsFollowed(true);
+                console.log(followers[i], "z");
+                console.log(x.numberOfFollower);
+              }
+            }
+          }
         }
       }
       if (myProfile) {
