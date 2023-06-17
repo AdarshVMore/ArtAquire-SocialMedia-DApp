@@ -1,6 +1,5 @@
 .recommended-designs {
   color: white;
-  margin-top: 170px;
 }
 
 .each-design {
@@ -16,6 +15,7 @@
 .each-design .top {
   display: flex;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 .each-design .top .profile-img {
   width: 30px;
@@ -162,4 +162,60 @@
   gap: 3px;
   background: linear-gradient(90deg, rgb(0, 72, 10) 0%, rgb(9, 181, 0) 100%);
   color: white;
+}
+
+.main-page .all-posts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  flex-wrap: wrap;
+  width: 70vw;
+  padding: 0;
+}
+
+.main-page .each-post {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-page img,
+.main-page video,
+.main-page audio {
+  width: 300px;
+  border-radius: 15px;
+  margin: 25px;
+  cursor: pointer;
+}
+.main-page .recommendedPg-profile {
+  margin-top: 100px;
+}
+
+.main-page .recommendedPg-profile .back-arrow {
+  transform: translateX(-20px) translateY(20px);
+  cursor: pointer;
+}
+.main-page .filter-post {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+}
+.main-page .filter-post button {
+  padding: 7px 15px;
+  background-color: rgb(30, 30, 30);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  /* transform: translateY(120px); */
+  margin-top: 120px;
+  position: relative;
+  z-index: -1;
+  cursor: pointer;
+}
+.main-page .filter-post .active {
+  color: black;
+  background-color: #fff;
 }

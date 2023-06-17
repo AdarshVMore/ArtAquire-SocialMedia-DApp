@@ -23,7 +23,14 @@ function ProfileNav({ setButtonOn }) {
           Post Design
         </button>
         {/* </a> */}
-        <button className="start-streaming-btn">Start Streaming</button>
+        <button
+          className="start-streaming-btn"
+          onClick={() => {
+            setButtonOn(5);
+          }}
+        >
+          Start Streaming
+        </button>
       </div>
     </div>
   );

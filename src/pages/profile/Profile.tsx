@@ -10,6 +10,7 @@ import ProfileHome from "../../component/profilehome/ProfileHome.tsx";
 import Analytics from "../../component/analytics/Analytics.tsx";
 import ProfileCommunityPost from "../../component/profilecomponent/ProfileCommunityPost.tsx";
 import MyNfts from "../../component/mynfts/MyNfts.tsx";
+import Streaming from "../../component/streaming/Streaming.tsx";
 
 function Profile({ contract, account, provider }) {
   const [buttonOn, setButtonOn] = useState(0);
@@ -264,6 +265,11 @@ function Profile({ contract, account, provider }) {
                   </button>
                 </>
               </div>
+            ) : (
+              ""
+            )}
+            {buttonOn === 5 ? (
+              <Streaming contract={contract} account={account} />
             ) : (
               ""
             )}

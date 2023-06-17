@@ -45,26 +45,31 @@ function ProfileHome({ contract, account }) {
       .call("addFollowers", [account]);
     console.log("followed");
   };
-
   useEffect(() => {
     const getProperty = async () => {
       const propertyInfo = await db.collection("User").get();
       console.log(propertyInfo.data);
+
       for (let i = 0; i < propertyInfo.data.length; i++) {
+        console.log(propertyInfo.data[i].data);
+
         if (propertyInfo.data[i].data.publicKey === account) {
           console.log(propertyInfo.data[i].data);
           setMyProfile(propertyInfo.data[i].data);
           console.log(myProfile);
-
           setProfileDone(true);
         }
       }
       if (myProfile) {
         const followers = myProfile.followerName;
         console.log(followers);
-        for (let i = 0; i < followers.length; i++) {
-          if (followers[i] === account) {
-            setIsFollowed(true);
+        if (followers) {
+          for (let i = 0; i < followers.length; i++) {
+            if (followers[i] === account) {
+              setIsFollowed(true);
+              console.log(followers[i], "z");
+              console.log(myProfile.numberOfFollower);
+            }
           }
         }
       }
@@ -135,8 +140,8 @@ function ProfileHome({ contract, account }) {
             <div className="text">
               <div className="profile-top">
                 <p className="artist-name">{myProfile.name}</p>
-                <button onClick={addFollower} disabled={!isFollowed}>
-                  {isFollowed ? "Follow" : "Followed"}
+                <button onClick={addFollower} disabled={isFollowed}>
+                  {isFollowed ? "Followed" : "Follow"}
                 </button>
               </div>
               <p className="artist-about">{myProfile.about}</p>
