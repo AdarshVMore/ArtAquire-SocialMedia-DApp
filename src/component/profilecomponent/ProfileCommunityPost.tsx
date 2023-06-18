@@ -21,9 +21,11 @@ function ProfileCommunityPost({ contract, account }) {
 
   let name;
 
-  for (let i = 0; i < allUsers.length; i++) {
-    if (allUsers[i].publicKey === account) {
-      name = allUsers[i].name;
+  if (allUsers) {
+    for (let i = 0; i < allUsers.length; i++) {
+      if (allUsers[i].publicKey === account) {
+        name = allUsers[i].name;
+      }
     }
   }
 

@@ -11,16 +11,17 @@ import Analytics from "../../component/analytics/Analytics.tsx";
 import ProfileCommunityPost from "../../component/profilecomponent/ProfileCommunityPost.tsx";
 import MyNfts from "../../component/mynfts/MyNfts.tsx";
 import Streaming from "../../component/streaming/Streaming.tsx";
+import logo from "../../assets/images/logo.svg";
 
 function Profile({ contract, account, provider }) {
   const [buttonOn, setButtonOn] = useState(0);
   let noOfFiles = 1;
 
   const [formPopup, setformPopup] = useState(true);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [selectedFile2, setSelectedFile2] = useState(null);
-  const [Thumbnail, setThumbnail] = useState(null);
-  const [FiletoBuy, setFileToBuy] = useState(null);
+  const [selectedFile, setSelectedFile] = useState();
+  const [selectedFile2, setSelectedFile2] = useState();
+  const [Thumbnail, setThumbnail] = useState();
+  const [FiletoBuy, setFileToBuy] = useState();
   const nameRef = useRef("");
   const descriptionRef = useRef("");
   const fileNameRef = useRef("");
@@ -34,24 +35,40 @@ function Profile({ contract, account, provider }) {
   let thumbnail;
 
   const getThumbnail = async (e) => {
+    e.preventDefault();
     const file = e.target.files[0];
     console.log(e.target.files);
-    setSelectedFile(file);
-    const someData = new Blob([selectedFile]);
-    thumbnail = await client.storeBlob(someData);
-    console.log(thumbnail);
-    setThumbnail(thumbnail);
+    if (file) {
+      // setSelectedFile(file);
+      const someData = new Blob([file]);
+      thumbnail = await client.storeBlob(someData);
+      console.log(thumbnail);
+      if (thumbnail) {
+        setThumbnail(thumbnail);
+      }
+    }
   };
 
   let fileToBuy;
+  const [file_name, setFile_name] = useState();
 
   const handleFileSelection = async (e) => {
+    e.preventDefault();
+
+    console.log("wait....");
     const file = e.target.files[0];
-    setSelectedFile2(file);
-    const someData = new Blob([selectedFile2]);
-    fileToBuy = await client.storeBlob(someData);
-    console.log(fileToBuy);
-    setFileToBuy(fileToBuy);
+    if (file) {
+      // setSelectedFile2(file);
+      const someData = new Blob([file]);
+      fileToBuy = await client.storeBlob(someData);
+      console.log(fileToBuy);
+      if (fileToBuy) {
+        setFileToBuy(fileToBuy);
+        const file_Name = file.name;
+        setFile_name(file_Name);
+        console.log(file_name);
+      }
+    }
   };
 
   const [selectedValue, setSelectedValue] = useState("image");
@@ -60,18 +77,18 @@ function Profile({ contract, account, provider }) {
     setSelectedValue(event.target.value);
   };
 
-  const addFile = async () => {
+  const addFile = async (e) => {
     console.log(
       Thumbnail,
-      fileNameRef.current.value,
+      fileNameRef.current.value ? fileNameRef.current.value : file_name,
       fileValueRef.current.value,
-      FiletoBuy
+      FiletoBuy ? FiletoBuy : urlRef.current.value
     );
     await contract.addFiles(
       Thumbnail,
-      fileNameRef.current.value,
+      fileNameRef.current.value ? fileNameRef.current.value : file_name,
       fileValueRef.current.value,
-      FiletoBuy
+      FiletoBuy ? FiletoBuy : urlRef.current.value
     );
   };
 
@@ -105,7 +122,8 @@ function Profile({ contract, account, provider }) {
         {/* <Sidebar /> */}
         <div className="sidebar">
           <div className="logo">
-            <h1>ArtAquire</h1>
+            {/* <h1>ArtAquire</h1> */}
+            <img src={logo} alt="" />
           </div>
           <div className="links">
             <div
@@ -224,6 +242,7 @@ function Profile({ contract, account, provider }) {
                           placeholder="File Name"
                           className="url"
                           onChange={handleFileSelection}
+                          name="file_name"
                         />
                         OR
                         <input

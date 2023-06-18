@@ -20,6 +20,8 @@ function Recommended({ contract, account, provider }) {
   const [popupIndex, setPopupIndex] = useState(null);
   const [isActive, setActive] = useState(0);
   const [isFollowed, setIsFollowed] = useState(false);
+  const [profileDesign, setProfileDesigns] = useState();
+  let profileDesigns = [];
 
   const [allDesigns, setAllDesigns] = useState([]);
   const [allFiles, setAllFiles] = useState([]);
@@ -100,7 +102,15 @@ function Recommended({ contract, account, provider }) {
       if (userInfo[i].publicKey === param) {
         setMyProfile(userInfo[i]);
         console.log(myProfile);
+        console.log(userInfo[i]);
+        for (let i = 0; i < allDesigns.length; i++) {
+          if (allDesigns[i].creator == param) {
+            profileDesigns.push(allDesigns[i]);
+          }
+        }
       }
+      console.log(profileDesigns);
+      setProfileDesigns(profileDesigns);
     }
     if (myProfile) {
       const followers = myProfile.followerName;
@@ -384,7 +394,7 @@ function Recommended({ contract, account, provider }) {
               <div className="profile-top">
                 <p className="artist-name">{myProfile.name}</p>
                 <button onClick={addFollower} disabled={isFollowed}>
-                  {isFollowed ? "Followed" : "Follow"}
+                  {isFollowed ? "Follow" : "Followed"}
                 </button>
               </div>
               <p className="artist-about">{myProfile.about}</p>
@@ -396,8 +406,8 @@ function Recommended({ contract, account, provider }) {
             </div>
           </div>
           <div className="all-posts">
-            {allDesigns
-              ? allDesigns.map((item, index) => (
+            {profileDesign
+              ? profileDesign.map((item, index) => (
                   <>
                     <div className="each-post">
                       {item.PostType === "image" ? (

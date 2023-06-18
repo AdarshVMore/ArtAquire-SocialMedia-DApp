@@ -31,8 +31,6 @@ function ProfileHome({ contract, account }) {
       twitter,
       linkedin,
       portfolio,
-      0,
-      [],
     ]);
     // publicKey:string, name:string, about:string, twitter:string, linkedin:string, portfolio:string, metamask:string
     console.log("sucessfull");
@@ -121,26 +119,23 @@ function ProfileHome({ contract, account }) {
   useEffect(() => {
     if (contract) {
       const getImageFromIPFS = async () => {
-        console.log(contract);
-
         designs = await contract.getAllDesigns();
         console.log(designs);
+        const designss = [];
         if (designs) {
           for (let i = 0; i < designs.length; i++) {
             if (designs[i].creator === account) {
-              const designss = [];
               designss.push(designs[i]);
-              setAllDesigns(designss);
-
-              console.log(allDesigns);
             }
           }
         }
+        console.log(designss);
+        setAllDesigns(designss);
+        console.log(allDesigns);
       };
 
       getImageFromIPFS();
     }
-    console.log(allDesigns);
   }, [contract, designs]);
 
   return (

@@ -7,6 +7,7 @@ import HomeNav from "../../component/homeNav/HomeNav.tsx";
 import Recommended from "../../component/recommended/Recommended.tsx";
 import Trending from "../../component/trending/Trending.tsx";
 import CommunityPost from "../../component/communitypost/CommunityPost.tsx";
+import logo from "../../assets/images/logo.svg";
 
 function Home({ contract, account, provider }) {
   const [buttonOn, setButtonOn] = useState(0);
@@ -17,7 +18,8 @@ function Home({ contract, account, provider }) {
         {/* <Sidebar /> */}
         <div className="sidebar">
           <div className="logo">
-            <h1>ArtAquire</h1>
+            {/* <h1>ArtAquire</h1> */}
+            <img src={logo} alt="" />
           </div>
           <div className="links">
             <div

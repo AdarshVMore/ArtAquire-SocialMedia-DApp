@@ -35,6 +35,10 @@
 .sidebar .logo {
   margin-bottom: 100px;
 }
+.logo img {
+  width: 80px;
+  transform: translateX(20px);
+}
 
 .sidebar .links {
   display: flex;

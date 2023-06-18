@@ -1,93 +1,122 @@
+.landing-page {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
 div {
-    font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 nav {
-    width: 100vw;
-    height: 15vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    overflow: hidden;
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
 }
 
 .landing-logo {
-    padding-left: 90px;
+  padding-left: 90px;
 }
 
 .landing-logo img {
-    width: 80px;
+  width: 80px;
 }
 
 .nav-list {
-    display: flex;
-    width: 60vw;
-    list-style-type: none;
-    align-items: center;
-    justify-content: space-evenly;
+  display: flex;
+  width: 60vw;
+  list-style-type: none;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-li a {
-    text-decoration: none;
-    color: white;
+.landing-page li a {
+  text-decoration: none;
+  color: white;
 }
 
 .nav-launch {
-    width: 90px;
-    height: 35px;
-    border-radius: 8px;
-    background-image: linear-gradient(90deg, #00FFF0, #57FF1C);
-    font-weight: bolder;
-
+  width: 90px;
+  height: 35px;
+  border-radius: 8px;
+  background-image: linear-gradient(90deg, #00fff0, #57ff1c);
+  font-weight: bolder;
 }
 
 .landing-main {
-    overflow: hidden;
-    height: 80vh;
-    display: flex;
-    align-items: center;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .content {
-    margin: 50px;
-    align-items: center;
-    padding-left: 50px;
+  margin: 50px;
+  align-items: center;
+  padding-left: 50px;
 }
 
 .content h1 {
-    background-image: linear-gradient(60deg, #00FFF0, #57FF1C 50%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 48px;
-    padding-bottom: 30px;
+  background-image: linear-gradient(60deg, #00fff0, #57ff1c 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 48px;
+  padding-bottom: 30px;
 }
 
 .content h3 {
-    background-image: linear-gradient(60deg, #00FFF0, #57FF1C 50%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 24px;
-    padding-bottom: 30px;
+  background-image: linear-gradient(60deg, #00fff0, #57ff1c 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 24px;
+  padding-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.content h3 span {
+  transform: translateY(4px);
+}
+.landing-img img {
+  transform: translateY(50px);
+  width: 750px;
+}
+.content p {
+  padding-bottom: 30px;
+  font-size: 15px;
+  width: 120%;
 }
 
-.content p {
-    padding-bottom: 30px;
+.landing-page a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+.landing-page button {
+  border: none;
+  outline: none;
 }
 
 .launch {
-    background-image: linear-gradient(90deg, #00FFF0, #57FF1C);
-    width: 150px;
-    height: 50px;
-    border-radius: 10px;
-    font-weight: bolder;
-    font-size: 18px;
-    margin-top: 30px;
+  background-image: linear-gradient(90deg, #00fff0, #57ff1c);
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: 18px;
+  margin-top: 30px;
 }
 
 .landing-img {
-    position: relative;
-    left: 60px;
+  position: relative;
+  left: 60px;
 }

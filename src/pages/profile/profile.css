@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  width: 600px;
   gap: 2rem;
   margin-top: 60px;
   margin-bottom: 100px;
@@ -57,7 +57,7 @@
   border: none;
   color: white;
   outline: none;
-  width: 100px;
+  width: 200px;
   border-radius: 10px;
 }
 .postDesign-form .name {
@@ -90,10 +90,12 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  justify-content: space-between;
+}
+.postDesign-form .url {
+  width: 50%;
 }
 .postDesign-form .value-input {
-  width: 45%;
+  width: 50%;
   border-radius: 15px;
   border: none;
   outline: none;
@@ -104,7 +106,8 @@
   justify-content: space-between;
 }
 .postDesign-form .value-input p {
-  margin: 0 20px;
+  /* margin: 0 10px; */
+  transform: translateX(-20px);
 }
 .postDesign-form .value {
   width: 70%;
@@ -113,6 +116,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 .postDesign-form .each-file .file {
   width: 45%;

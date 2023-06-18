@@ -29,7 +29,7 @@ function MyNfts({ contract, account }) {
         >
           {item.PostType === "image" ? (
             <img
-              src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+              src={`https://${item.thumbnail}.ipfs.nftstorage.link/`}
               alt="IPFS Image"
               onClick={() => {
                 setPopupIndex(index);
@@ -41,7 +41,7 @@ function MyNfts({ contract, account }) {
           {item.PostType === "audio" ? (
             <audio controls>
               <source
-                src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                src={`https://${item.thumbnail}.ipfs.nftstorage.link/`}
                 type="audio/mpeg"
                 onClick={() => {
                   setPopupIndex(index);
@@ -60,7 +60,7 @@ function MyNfts({ contract, account }) {
               }}
             >
               <source
-                src={`https://${item.thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                src={`https://${item.thumbnail}.ipfs.nftstorage.link/`}
                 type="video/mp4"
               />
             </video>
@@ -79,29 +79,53 @@ function MyNfts({ contract, account }) {
               <AiOutlineClose size={24} color="white" />
             </div>
             <div className="left">
-              <div className="img">
+              {/* <div className="img">
                 <img
                   src={`https://${myNfts[popupIndex].thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
                   alt=""
                 />
-              </div>
+              </div> */}
+              {myNfts[popupIndex].PostType === "image" ? (
+                <img
+                  src={`https://${myNfts[popupIndex].thumbnail}.ipfs.nftstorage.link/`}
+                  alt=""
+                />
+              ) : null}
+              {myNfts[popupIndex].PostType === "audio" ? (
+                <audio controls>
+                  <source
+                    src={`https://${myNfts[popupIndex].thumbnail}.ipfs.nftstorage.link/`}
+                    type="audio/mpeg"
+                  />
+                </audio>
+              ) : null}
+              {myNfts[popupIndex].PostType === "video" ? (
+                <video controls>
+                  <source
+                    src={`https://${myNfts[popupIndex].thumbnail}.ipfs.nftstorage.link/`}
+                    type="video/mp4"
+                  />
+                </video>
+              ) : null}
               <div className="buy">
                 <div className="heading">Buy</div>
-                {myNfts.map((item, index) => (
-                  <div className="buy-links">
-                    <div className="view">
-                      <p>{item.fileName}</p>
-                      <button>
-                        <a
-                          href={`https://${myNfts[popupIndex].file}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
-                          target="_blank"
-                        >
-                          File
-                        </a>
-                      </button>
-                    </div>
+                <div className="buy-links">
+                  <div className="view">
+                    <p>{myNfts[popupIndex].fileName}</p>
+                    <button>
+                      <a
+                        href={
+                          myNfts[popupIndex].file.startsWith("https")
+                            ? myNfts[popupIndex].file
+                            : `https://${myNfts[popupIndex].file}.ipfs.w3s.link/?filename=${myNfts[popupIndex].fileName}`
+                        }
+                        target="_blank"
+                      >
+                        File
+                      </a>
+                    </button>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
