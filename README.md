@@ -18,14 +18,28 @@
 ArtQuire comprises eight key sections that serve various purposes:
 
 <b>
-🌟 Recommended
-🔥 Trending
-🌐 Community Post
-👤 Profile
-📊 Analytics
-💎 My NFTs
-🎨 Post Designs
-📺 Streaming
+<p>🌟 Recommended
+</p>
+<p>  🔥 Trending
+
+</p>
+<p>🌐 Community Post
+
+</p>
+<p>👤 Profile
+</p>
+<p>📊 Analytics
+
+</p>
+<p>💎 My NFTs
+
+</p>
+<p>🎨 Post Designs
+
+</p>
+<p>🌟 Recommended
+</p>
+
 </b>
 Each section is designed to provide unique experiences and functionalities, as indicated by their names.
 
