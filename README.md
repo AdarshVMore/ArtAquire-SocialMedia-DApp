@@ -5,12 +5,12 @@
 
 <h3>💻 Tech Stack
 </h3>
-<b>Solidity</b>: Creating smart contracts
-<b>Hardhat</b>: Deploying the smart contract
-<b>FVM</b>: Deployment environment
-<b>Polybase</b>: User and designer database management
-<b>IPFS</b>: Storage for images and files
-<b>NFT.storage</b>: Integration with IPFS for data storage
+<b>Solidity</b>: Creating smart contracts <br>
+<b>Hardhat</b>: Deploying the smart contract <br>
+<b>FVM</b>: Deployment environment<br>
+<b>Polybase</b>: User and designer database management<br>
+<b>IPFS</b>: Storage for images and files<br>
+<b>NFT.storage</b>: Integration with IPFS for data storage<br>
 
 <h3>🎉 Features
 </h3>
