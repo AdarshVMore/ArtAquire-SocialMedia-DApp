@@ -113,10 +113,11 @@ function Recommended({ contract, account, provider }) {
       setProfileDesigns(profileDesigns);
     }
     if (myProfile) {
-      const followers = myProfile.followerName;
-      console.log(followers);
-      for (let i = 0; i < followers.length; i++) {
-        if (followers[i] === account) {
+      console.log(myProfile);
+      console.log("wassup");
+      const names = myProfile.followerName;
+      for (let i = 0; i < names.length; i++) {
+        if (names[i] === account) {
           setIsFollowed(true);
         }
       }
@@ -393,8 +394,8 @@ function Recommended({ contract, account, provider }) {
             <div className="text">
               <div className="profile-top">
                 <p className="artist-name">{myProfile.name}</p>
-                <button onClick={addFollower} disabled={isFollowed}>
-                  {isFollowed ? "Follow" : "Followed"}
+                <button disabled={isFollowed} onClick={addFollower}>
+                  {isFollowed ? "Followed" : "Follow"}
                 </button>
               </div>
               <p className="artist-about">{myProfile.about}</p>

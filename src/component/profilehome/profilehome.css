@@ -136,3 +136,10 @@
   margin: 20px;
   cursor: pointer;
 }
+
+.profile-home .social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}

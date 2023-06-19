@@ -3,6 +3,10 @@ import "./profilehome.css";
 import db from "../../polybase";
 import { ethers } from "ethers";
 
+import { AiFillTwitterCircle } from "react-icons/ai";
+import { AiFillLinkedin } from "react-icons/ai";
+import { AiOutlineLink } from "react-icons/ai";
+
 function ProfileHome({ contract, account }) {
   const [showForm, setShowForm] = useState(false);
   const [profileDone, setProfileDone] = useState(false);
@@ -157,6 +161,17 @@ function ProfileHome({ contract, account }) {
                 <p className="count">{myProfile.numberOfFollower}</p>
                 <p>Followers</p>
               </div>
+            </div>
+            <div className="social-links">
+              <a href={myProfile.twitter} target="_blank">
+                <AiFillLinkedin color="white" size={28} />
+              </a>
+              <a href={myProfile.linkedin} target="_blank">
+                <AiFillTwitterCircle color="white" size={28} />
+              </a>
+              <a href={myProfile.portfolio} target="_blank">
+                <AiOutlineLink color="white" size={28} />
+              </a>
             </div>
           </div>
 

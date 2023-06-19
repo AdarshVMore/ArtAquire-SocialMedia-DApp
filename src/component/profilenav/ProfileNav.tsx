@@ -7,7 +7,7 @@ function ProfileNav({ setButtonOn }) {
   return (
     <div className="profile-nav">
       <div className="right-profile-nav">
-        <a href="/">
+        <a href="/home">
           <BiArrowBack color="white" size={24} />
         </a>
       </div>

@@ -54,7 +54,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/landing"
+            path="/"
             element={
               <LandingPage
               // contract={contract}
@@ -64,7 +64,7 @@ function App() {
             }
           />
           <Route
-            path="/"
+            path="/home"
             element={
               <Home contract={contract} account={account} provider={provider} />
             }

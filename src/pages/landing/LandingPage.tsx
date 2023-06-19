@@ -25,9 +25,11 @@ function LandingPage() {
             <li>
               <a href="#">About</a>
             </li>
-            <li>
-              <button className="nav-launch">Launch</button>
-            </li>
+            {/* <li>
+              <a href="/home">
+                <button className="launch">Launch</button>
+              </a>
+            </li> */}
           </ul>
         </div>
       </nav>
@@ -51,7 +53,7 @@ function LandingPage() {
             artists.
           </p>
           <button className="launch">
-            <a href="/">Launch Dapp</a>
+            <a href="/home">Launch Dapp</a>
           </button>
         </div>
         <div className="landing-img">
