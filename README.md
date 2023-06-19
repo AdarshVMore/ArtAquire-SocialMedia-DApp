@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+<h1>🎨 ArtQuire 🚀
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  Welcome to ArtQuire, where we aim to revolutionize the way designers, artists, and creators showcase their talent. Our platform empowers users like you to discover, customize, and collect exceptional digital art. With ArtQuire, you can even enhance the artwork by making your own modifications. Additionally, you have the opportunity to engage with artists and explore potential collaborations. ✨🎉
 
-## Available Scripts
+<h3>💻 Tech Stack
+</h3>
+<b>Solidity</b>: Creating smart contracts <br>
+<b>Hardhat</b>: Deploying the smart contract <br>
+<b>FVM</b>: Deployment environment<br>
+<b>Polybase</b>: User and designer database management<br>
+<b>IPFS</b>: Storage for images and files<br>
+<b>NFT.storage</b>: Integration with IPFS for data storage<br>
 
-In the project directory, you can run:
+<h3>🎉 Features
+</h3>
 
-### `npm start`
+ArtQuire comprises eight key sections that serve various purposes:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<b>
+<p>🌟 Recommended
+</p>
+<p>  🔥 Trending
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+</p>
+<p>🌐 Community Post
 
-### `npm test`
+</p>
+<p>👤 Profile
+</p>
+<p>📊 Analytics
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+</p>
+<p>💎 My NFTs
 
-### `npm run build`
+</p>
+<p>🎨 Post Designs
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</p>
+<p>🌟 Recommended
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+</b>
+Each section is designed to provide unique experiences and functionalities, as indicated by their names.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h3>🌈 Explore Diverse Designs
+</h3>
 
-### `npm run eject`
+On our website, you'll find a wide range of captivating designs to explore. From stunning illustrations to impressive UI designs, we offer something for everyone. You can discover video editing files, beautifully photoshopped images, as well as music beats and production files. 🖼️🎶🎬
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<h3>🚀 Coming Soon: Beta Version and Exciting Features
+</h3>
+We are thrilled to announce that the beta version of our platform will be launching in the coming months. We have an array of exciting features in store that will enhance your experience. We welcome investment and support from judges, mentors, and sponsors who are interested in joining us on this journey. 🚀🎉
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<h3>🔨 How It's Made
+</h3>
+Our development process involved leveraging the following technologies and tools:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Polybase: Integration was seamless, allowing us to easily create schemas, read and write data to our React frontend.
+IPFS: By utilizing a peer-to-peer network, we stored files efficiently and facilitated easy file downloads.
+NFT.storage: This service simplified the process of uploading and retrieving files from IPFS by requiring only an API and a CID.
+FVM: Our smart contract deployment was effortless, enabling hassle-free transfer of Filecoin to user accounts.
+🎯 Prototype and Demo
+Prototype: <a href="https://www.figma.com/file/g3mNEgJ5FHyAk1mtvyfnFI/UIHub?type=design&t=72rR202r9dRuOBIy-1">Figma Prototype</a>
+Demo Video: <a href="https://www.youtube.com/watch?v=9YNM6EVKM6s">YouTube Demo</a>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<h3>🚀 Getting Started
+</h3>
+To get started with ArtQuire, follow these steps:
 
-## Learn More
+Install the necessary dependencies by running npm i.
+Please note that further instructions for running the project locally may be provided in subsequent updates.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for your interest in ArtQuire. Stay tuned for more updates as we embark on this transformative journey at the intersection of art and technology. ✨🎨🚀
