@@ -41,6 +41,22 @@ ArtQuire comprises eight key sections that serve various purposes:
 </p>
 
 </b>
+![Screenshot 2023-06-18 181141](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/d9e2d7c6-d6a5-41e9-a811-4118aec22aaf)
+
+![Screenshot 2023-06-18 181406](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/825b7d5a-f578-4821-8bb2-7c8e97bec273)
+![Screenshot 2023-06-18 181319](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/e5baad38-5b86-4aef-b449-6b1a3e667fdd)
+
+![Screenshot 2023-06-18 181441](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/18045ca6-ad8a-4a8c-92f2-9ec4fba3c58a)
+
+
+
+![Screenshot 2023-06-18 181627](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/773d23aa-f26d-4a70-ba24-1675dcdd51c0)
+
+
+![Screenshot 2023-06-18 182326](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/018ad50e-abcb-4735-a272-5752989bd448)
+
+![Screenshot 2023-06-18 181547](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/f9efdda6-0a05-4dec-971c-7a53e670c86d)
+
 Each section is designed to provide unique experiences and functionalities, as indicated by their names.
 
 <h3>🌈 Explore Diverse Designs
