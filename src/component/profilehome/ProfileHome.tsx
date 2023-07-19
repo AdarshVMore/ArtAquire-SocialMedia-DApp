@@ -54,13 +54,15 @@ function ProfileHome({ contract, account }) {
 
       for (let i = 0; i < propertyInfo.data.length; i++) {
         console.log(propertyInfo.data[i].data);
+        console.log(propertyInfo.data[i].data.address, account);
 
-        if (propertyInfo.data[i].data.publicKey === account) {
+        if (propertyInfo.data[i].data.address === account) {
           console.log(propertyInfo.data[i].data);
           const x = propertyInfo.data[i].data;
           setMyProfile(x);
           console.log(myProfile);
           setProfileDone(true);
+          console.log(profileDone);
           const followers = x.followerName;
           console.log(followers);
           if (followers) {

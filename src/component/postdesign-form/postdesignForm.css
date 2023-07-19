@@ -1,0 +1,364 @@
+.postDesign {
+  position: absolute;
+  top: 50px;
+  z-index: 10;
+  background-color: #262626;
+  width: 75vw;
+  right: 8vw;
+  border-radius: 20px;
+  height: 90vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  display: hidden;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.next-btn {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
+
+/* ===========================================   TOP MOST PART   ==================================== */
+.top-most-part {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px;
+}
+.top-most-part p {
+  text-align: center;
+}
+/* ==============================================   TOP NAV  =================================== */
+
+.top-nav-links {
+  width: 100%;
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+.top-nav-links .each-nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 1rem;
+}
+.top-nav-links .each-nav-link .circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 100px;
+  border: 3px solid #00d1ff;
+  background-color: #00d1ff;
+  transition: 0.3s ease-in-out;
+}
+
+.top-least-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.line-passing-nav {
+  width: 490px;
+  height: 2px;
+  background-color: gray;
+  position: relative;
+  z-index: -5;
+  transform: translateY(-8px);
+}
+
+.selected-nav-name {
+  color: #00d1ff;
+  font-weight: 600;
+}
+.selected-nav-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 100px;
+  border: 3px solid #00d1ff;
+  background-color: #262626;
+  transition: 0.3s ease-in-out;
+}
+
+/* ============  UPLOAD THUMBNAIL =========== */
+.thumbnail-heading {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.file-upload-box {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  width: 300px;
+  cursor: pointer;
+}
+
+.file-upload-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.file-input-label {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+  background-color: #00d1ff;
+  padding: 7px 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  /* width: 40%; */
+  text-align: center;
+}
+
+.file-input {
+  display: none;
+}
+
+.selected-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uploaded-image {
+  /* width: 150px; */
+  height: 145px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  transform: translateY(5px);
+}
+
+.change-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* =====================================================   DETAILS   ============================================== */
+
+.hide {
+  display: none;
+}
+
+.postDesign .postForm-main-component .details {
+  padding: 20px 80px;
+  justify-content: space-between;
+  align-items: end;
+  width: 100%;
+  display: flex;
+}
+.postDesign .postForm-main-component .details h4 {
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+.details .details-left {
+  width: 100%;
+}
+.details .input {
+  width: 70%;
+
+  border: 1px solid #808080;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 15px;
+  color: gray;
+}
+.details input,
+.details textarea {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  resize: none;
+  color: white;
+  font-family: poppins;
+}
+.postDesign button {
+  background-color: #00d1ff;
+  color: black;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+.details textarea {
+  width: 98%;
+  height: 120px;
+}
+
+/* =====================================   ADD IMAGES   ================================== */
+.add-images {
+  padding: 20px 50px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: end;
+}
+.add-images-left {
+  width: 90%;
+}
+.image-upload-container {
+  width: 300px;
+  height: 150px;
+}
+
+.image-upload-box {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.image-preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.image-item {
+  position: relative;
+  width: 300px;
+  height: 175px;
+  overflow: hidden; /* Ensure the image stays within the div */
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Scale and crop the image to fit within the div */
+}
+
+.remove-image {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.image-item:hover .remove-image {
+  opacity: 1;
+}
+.add-images-input {
+  display: none;
+}
+
+/* ===================================================   SELL FILES   =========================================== */
+
+.postDesign .sell-files {
+  padding: 20px 50px;
+  width: 100%;
+}
+.postDesign .sell-files .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 23%;
+  justify-content: left;
+}
+.postDesign .sell-files .form input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+.postDesign .sell-files .form .fileName {
+  border: 1px solid #808080;
+  padding: 7px 10px;
+  border-radius: 5px;
+  width: 500px;
+}
+.postDesign .sell-files .form .file-price {
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: 1px solid #808080;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+.postDesign .sell-files .form .file-price input {
+  width: 130px;
+}
+.postDesign .sell-files .form button {
+  width: 80px;
+  cursor: pointer;
+}
+/* ====================   UPDATE FILES TABLE   ======================= */
+
+.sell-files h4 {
+  margin-top: 50px;
+}
+.custom-table {
+  border-collapse: collapse;
+  width: 60%;
+  margin-top: 30px;
+}
+
+.custom-table th {
+  border-bottom: 2px solid #555555;
+  width: 40%;
+  font-weight: 500;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 8px;
+  text-align: left;
+}
+
+/* .custom-table thead th {
+  background-color: #f2f2f2;
+} */

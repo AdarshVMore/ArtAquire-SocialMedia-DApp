@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./CommunityPost.css";
-import { Link } from "react-router-dom";
 import { BsSuitHeart } from "react-icons/bs";
 import { BsChatLeft } from "react-icons/bs";
 import db from "../../polybase";
-import { all } from "axios";
 
 function CommunityPost({ contract, account }) {
   const [allPosts, setAllPosts] = useState();

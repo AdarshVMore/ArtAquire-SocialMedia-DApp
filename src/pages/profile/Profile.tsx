@@ -10,8 +10,8 @@ import ProfileHome from "../../component/profilehome/ProfileHome.tsx";
 import Analytics from "../../component/analytics/Analytics.tsx";
 import ProfileCommunityPost from "../../component/profilecomponent/ProfileCommunityPost.tsx";
 import MyNfts from "../../component/mynfts/MyNfts.tsx";
-import Streaming from "../../component/streaming/Streaming.tsx";
 import logo from "../../assets/images/logo.svg";
+import PostDesignForm from "../../component/postdesign-form/PostDesignForm";
 
 function Profile({ contract, account, provider }) {
   const [buttonOn, setButtonOn] = useState(0);
@@ -193,102 +193,100 @@ function Profile({ contract, account, provider }) {
               ""
             )}
             {buttonOn === 4 ? (
-              <div className="postDesign-form">
-                <>
-                  <div className="top">
-                    <input
-                      type="file"
-                      className="thumbnail"
-                      onChange={getThumbnail}
-                    />
-                    <select value={selectedValue} onChange={handleSelectChange}>
-                      <option value="image">Image</option>
-                      <option value="audio">Audio</option>
-                      <option value="video">Video</option>
-                    </select>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="name"
-                    ref={nameRef}
-                    className="name"
-                  />
-                  <textarea
-                    placeholder="description"
-                    className="description"
-                    col="15"
-                    ref={descriptionRef}
-                  />
-                  <div className="add-files-top">
-                    <p>Add Files</p>
-                  </div>
-                  <div className="all-file-inputs">
-                    <div className="each-file">
-                      <div className="edit-access">
-                        <input
-                          type="text"
-                          placeholder="File Name"
-                          ref={fileNameRef}
-                          className="url"
-                        />
-                        <div className="value-input">
-                          <input type="number" ref={fileValueRef} />
-                          <p> ETH</p>
-                        </div>
-                      </div>
-                      <div className="file-type">
-                        <input
-                          type="file"
-                          placeholder="File Name"
-                          className="url"
-                          onChange={handleFileSelection}
-                          name="file_name"
-                        />
-                        OR
-                        <input
-                          type="text"
-                          placeholder="File Url"
-                          ref={urlRef}
-                        />
-                      </div>
-                    </div>
-                  </div>
+              // <div className="postDesign-form">
+              //   <>
+              //     <div className="top">
+              //       <input
+              //         type="file"
+              //         className="thumbnail"
+              //         onChange={getThumbnail}
+              //       />
+              //       <select value={selectedValue} onChange={handleSelectChange}>
+              //         <option value="image">Image</option>
+              //         <option value="audio">Audio</option>
+              //         <option value="video">Video</option>
+              //       </select>
+              //     </div>
+              //     <input
+              //       type="text"
+              //       placeholder="name"
+              //       ref={nameRef}
+              //       className="name"
+              //     />
+              //     <textarea
+              //       placeholder="description"
+              //       className="description"
+              //       col="15"
+              //       ref={descriptionRef}
+              //     />
+              //     <div className="add-files-top">
+              //       <p>Add Files</p>
+              //     </div>
+              //     <div className="all-file-inputs">
+              //       <div className="each-file">
+              //         <div className="edit-access">
+              //           <input
+              //             type="text"
+              //             placeholder="File Name"
+              //             ref={fileNameRef}
+              //             className="url"
+              //           />
+              //           <div className="value-input">
+              //             <input type="number" ref={fileValueRef} />
+              //             <p> ETH</p>
+              //           </div>
+              //         </div>
+              //         <div className="file-type">
+              //           <input
+              //             type="file"
+              //             placeholder="File Name"
+              //             className="url"
+              //             onChange={handleFileSelection}
+              //             name="file_name"
+              //           />
+              //           OR
+              //           <input
+              //             type="text"
+              //             placeholder="File Url"
+              //             ref={urlRef}
+              //           />
+              //         </div>
+              //       </div>
+              //     </div>
 
-                  <button
-                    className={`add-file-btn ${isChecked ? "" : "checked"}`}
-                    disabled={isChecked}
-                    onClick={() => {
-                      addFile();
-                    }}
-                  >
-                    Add File
-                  </button>
+              //     <button
+              //       className={`add-file-btn ${isChecked ? "" : "checked"}`}
+              //       disabled={isChecked}
+              //       onClick={() => {
+              //         addFile();
+              //       }}
+              //     >
+              //       Add File
+              //     </button>
 
-                  <div className="checkbox">
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={handleCheckboxChange}
-                    />
-                    <p>All Files Uploaded I am ready to post the Art</p>
-                  </div>
+              //     <div className="checkbox">
+              //       <input
+              //         type="checkbox"
+              //         checked={isChecked}
+              //         onChange={handleCheckboxChange}
+              //       />
+              //       <p>All Files Uploaded I am ready to post the Art</p>
+              //     </div>
 
-                  <button
-                    onClick={() => {
-                      postDesign();
-                    }}
-                    className={`post-design-btn ${isChecked ? "checked" : ""}`}
-                    disabled={!isChecked}
-                  >
-                    Post
-                  </button>
-                </>
-              </div>
-            ) : (
-              ""
-            )}
-            {buttonOn === 5 ? (
-              <Streaming contract={contract} account={account} />
+              //     <button
+              //       onClick={() => {
+              //         postDesign();
+              //       }}
+              //       className={`post-design-btn ${isChecked ? "checked" : ""}`}
+              //       disabled={!isChecked}
+              //     >
+              //       Post
+              //     </button>
+              //   </>
+              // </div>
+              <>
+                <PostDesignForm />
+              </>
             ) : (
               ""
             )}

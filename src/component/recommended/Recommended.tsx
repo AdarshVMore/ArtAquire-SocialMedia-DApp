@@ -94,16 +94,33 @@ function Recommended({ contract, account, provider }) {
 
       getImageFromIPFS();
     }
+
+    const getProperty = async () => {
+      propertyInfo = await db.collection("User").get();
+      console.log(propertyInfo.data);
+      const pushThisArray = [];
+      for (let i = 0; i < propertyInfo.data.length; i++) {
+        pushThisArray.push(propertyInfo.data[i].data);
+        console.log(propertyInfo.data[i].data);
+      }
+      console.log(pushThisArray);
+      setUserInfo(pushThisArray);
+    };
+
+    getProperty();
     console.log(allDesigns);
   }, [contract, designs, isActive]);
 
+  console.log(userInfo);
+
   const viewProfile = async (param) => {
     for (let i = 0; i < userInfo.length; i++) {
-      if (userInfo[i].publicKey === param) {
+      if (userInfo[i].address === param) {
         setMyProfile(userInfo[i]);
         console.log(myProfile);
         console.log(userInfo[i]);
         for (let i = 0; i < allDesigns.length; i++) {
+          console.log(allDesigns[i].creator, param);
           if (allDesigns[i].creator == param) {
             profileDesigns.push(allDesigns[i]);
           }
@@ -111,6 +128,7 @@ function Recommended({ contract, account, provider }) {
       }
       console.log(profileDesigns);
       setProfileDesigns(profileDesigns);
+      setShowProfile(true);
     }
     if (myProfile) {
       console.log(myProfile);
@@ -132,20 +150,7 @@ function Recommended({ contract, account, provider }) {
     console.log("followed");
   };
 
-  useEffect(() => {
-    const getProperty = async () => {
-      propertyInfo = await db.collection("User").get();
-      console.log(propertyInfo.data);
-      const pushThisArray = [];
-      for (let i = 0; i < propertyInfo.data.length; i++) {
-        pushThisArray.push(propertyInfo.data[i].data);
-      }
-      setUserInfo(pushThisArray);
-      console.log(pushThisArray);
-      console.log(userInfo);
-    };
-    getProperty();
-  }, [account, contract]);
+  useEffect(() => {}, [account, contract]);
 
   const [showProfile, setShowProfile] = useState(false);
 
@@ -197,14 +202,14 @@ function Recommended({ contract, account, provider }) {
                       className="top"
                       onClick={async () => {
                         await viewProfile(item.creator);
-                        setShowProfile(true);
+                        // setShowProfile(true);
                       }}
                     >
                       <div className="profile-img"></div>
                       <div className="profile-name">
                         {userInfo
                           ? userInfo.map((itemx, index) =>
-                              itemx.publicKey === item.creator ? itemx.name : ""
+                              itemx.address === item.creator ? itemx.name : ""
                             )
                           : ""}
                       </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BsBell } from "react-icons/bs";
 import "./homenav.css";
 import { Link } from "react-router-dom";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 function HomeNav({ contract, account }) {
   const [isConnected, setIsConnected] = useState(false);
@@ -26,7 +27,9 @@ function HomeNav({ contract, account }) {
         {/* {isConnected ? (
           <button className="connect-wallet-btn">Connect Wallet</button>
         ) : ( */}
-        <p>{formattedAccount}</p>
+        <p>
+          <ConnectButton />
+        </p>
         {/* )} */}
         <Link to="/profile">
           <button className="profile-btn"></button>

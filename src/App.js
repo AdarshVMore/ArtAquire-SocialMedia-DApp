@@ -4,12 +4,40 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UIHub from "./UIHub.json";
 import { ethers } from "ethers";
 
+import "@rainbow-me/rainbowkit/styles.css";
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+  darkTheme,
+} from "@rainbow-me/rainbowkit";
+import { configureChains, createConfig, WagmiConfig, useAccount } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
+
 import Home from "./pages/home/Home.tsx";
 import Profile from "./pages/profile/Profile.tsx";
 import LandingPage from "./pages/landing/LandingPage.tsx";
 
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum],
+  [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: "My RainbowKit App",
+  projectId: "30980df3d204e25c5ae7cfe90918d5ef",
+  chains,
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient,
+});
+
 function App() {
-  const [account, setAccount] = useState("");
+  const { address, isConnecting, isDisconnected } = useAccount();
   const [contract, setContract] = useState("");
   const [provider, setProvider] = useState("");
   useEffect(() => {
@@ -27,9 +55,7 @@ function App() {
         await provider.send("eth_requestAccounts", []);
         const signer = provider.getSigner();
         const address = await signer.getAddress();
-        setAccount(address);
         let contractAddress = "0x36286c0E7a58Bad47725084959Ab554F4545860C";
-        // let contractAddress = "0xF3c41f6426e85D198f51563a3145e731165dbf86";
 
         const contract = new ethers.Contract(
           contractAddress,
@@ -50,38 +76,53 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <LandingPage
-              // contract={contract}
-              // account={account}
-              // provider={provider}
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider
+        chains={chains}
+        theme={darkTheme({
+          accentColor: "#0077ff",
+          accentColorForeground: "white",
+          borderRadius: "large",
+        })}
+      >
+        <div className="App">
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <LandingPage
+                  // contract={contract}
+                  // account={account}
+                  // provider={provider}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/home"
-            element={
-              <Home contract={contract} account={account} provider={provider} />
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <Profile
-                contract={contract}
-                account={account}
-                provider={provider}
+              <Route
+                path="/home"
+                element={
+                  <Home
+                    contract={contract}
+                    account={address}
+                    provider={provider}
+                  />
+                }
               />
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </div>
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    contract={contract}
+                    account={address}
+                    provider={provider}
+                  />
+                }
+              />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </RainbowKitProvider>
+    </WagmiConfig>
   );
 }
 

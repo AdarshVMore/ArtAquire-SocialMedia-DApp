@@ -8,6 +8,6 @@ import { Polybase } from "@polybase/client";
 
 const db = new Polybase({
   defaultNamespace:
-    "pk/0x9a7d1183211b4015f163d5b709304911e4cd5cae9299cbc9065f04640c055f20aae422630147d4f1c41b52e898afd80b7bb39be81b2e1523307136ebd59ebed9/ArtQuire",
+    "pk/0x9a7d1183211b4015f163d5b709304911e4cd5cae9299cbc9065f04640c055f20aae422630147d4f1c41b52e898afd80b7bb39be81b2e1523307136ebd59ebed9/ArtQuireFinal",
 });
 export default db;
