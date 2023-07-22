@@ -21,6 +21,7 @@ function Recommended({ contract, account, provider }) {
   const [isActive, setActive] = useState(0);
   const [isFollowed, setIsFollowed] = useState(false);
   const [profileDesign, setProfileDesigns] = useState();
+  const [images, setImages] = useState([]);
   let profileDesigns = [];
 
   const [allDesigns, setAllDesigns] = useState([]);
@@ -154,6 +155,23 @@ function Recommended({ contract, account, provider }) {
 
   const [showProfile, setShowProfile] = useState(false);
 
+  // ==========================   CAROUSEL LOGIC
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = (images) => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePrev = (images) => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleCircleClick = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <div className="main-page">
       {!showProfile ? (
@@ -219,6 +237,7 @@ function Recommended({ contract, account, provider }) {
                       className="design-img"
                       onClick={async () => {
                         await getAddedFiles(item.thumbnail);
+                        setImages(item.filesToShow);
 
                         setPopupIndex(index);
                         setPostPopup(true);
@@ -315,10 +334,35 @@ function Recommended({ contract, account, provider }) {
                   <div className="left">
                     <div className="img">
                       {allDesigns[popupIndex].PostType === "image" ? (
-                        <img
-                          src={`https://${allDesigns[popupIndex].thumbnail}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
-                          alt=""
-                        />
+                        <div className="carousel">
+                          <div className="image-container">
+                            {images.map((imageUrl, index) => (
+                              <img
+                                key={index}
+                                src={`https://${imageUrl}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                                alt={`Image ${index}`}
+                                className={
+                                  index === currentIndex ? "active" : ""
+                                }
+                              />
+                            ))}
+                          </div>
+                          <div className="navigation">
+                            <button onClick={handlePrev}>&lt;</button>
+                            <button onClick={handleNext}>&gt;</button>
+                          </div>
+                          <div className="circles">
+                            {images.map((_, index) => (
+                              <div
+                                key={index}
+                                className={`circle ${
+                                  index === currentIndex ? "active" : ""
+                                }`}
+                                onClick={() => handleCircleClick(index)}
+                              ></div>
+                            ))}
+                          </div>
+                        </div>
                       ) : null}
                       {allDesigns[popupIndex].PostType === "audio" ? (
                         <audio controls>

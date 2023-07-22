@@ -55,13 +55,11 @@ function App() {
         await provider.send("eth_requestAccounts", []);
         const signer = provider.getSigner();
         const address = await signer.getAddress();
-        let contractAddress = "0x36286c0E7a58Bad47725084959Ab554F4545860C";
+        let contractAddress = "0xE9E73c1094ae078dE14E33639734F6A266356a7F";
 
-        const contract = new ethers.Contract(
-          contractAddress,
-          UIHub.abi,
-          signer
-        );
+        const contract = new ethers.Contract(contractAddress, UIHub, signer);
+
+        console.log(contract);
 
         setContract(contract);
         setProvider(provider);

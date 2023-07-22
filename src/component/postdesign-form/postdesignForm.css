@@ -36,6 +36,9 @@
   bottom: 50px;
   right: 50px;
 }
+.disable {
+  opacity: 0.5;
+}
 
 /* ===========================================   TOP MOST PART   ==================================== */
 .top-most-part {
@@ -102,6 +105,37 @@
   border: 3px solid #00d1ff;
   background-color: #262626;
   transition: 0.3s ease-in-out;
+}
+
+/* =============================================   SELECT FILE TYPE   ===================================== */
+
+.selectFileType {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+  gap: 2rem;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.selectFileType .eachType {
+  width: 25%;
+  height: 200px;
+  background-color: transparent;
+  border: 2px solid #555;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.selectFileType .eachType:hover {
+  color: #00d1ff;
+  border: 3px solid #00d1ff;
 }
 
 /* ============  UPLOAD THUMBNAIL =========== */
@@ -209,6 +243,7 @@
   resize: none;
   color: white;
   font-family: poppins;
+  width: 100%;
 }
 .postDesign button {
   background-color: #00d1ff;
@@ -225,11 +260,31 @@
   height: 120px;
 }
 
+/* ========================== */
+
+.video-upload-box {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed gray;
+  border-radius: 20px;
+  height: 400px;
+  margin: 50px;
+}
+
+video {
+  /* width: 100%; */
+  max-height: 400px;
+}
+
 /* =====================================   ADD IMAGES   ================================== */
 .add-images {
   padding: 20px 50px;
   display: flex;
   width: 100%;
+  height: 100%;
   justify-content: space-between;
   align-items: end;
 }
@@ -362,3 +417,26 @@
 /* .custom-table thead th {
   background-color: #f2f2f2;
 } */
+
+/* ==========================================   POST DESIGNS  ================================= */
+
+.view-post {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 20px 100px;
+}
+
+.view-post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.view-post .thumbnail img {
+  position: relative;
+  width: 400px;
+  /* height: 200px; */
+  overflow: hidden; /* Ensure the image stays within the div */
+  margin-top: 10px;
+  margin-right: 10px;
+}

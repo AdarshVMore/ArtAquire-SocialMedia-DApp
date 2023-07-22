@@ -16,6 +16,7 @@ import PostDesignForm from "../../component/postdesign-form/PostDesignForm";
 function Profile({ contract, account, provider }) {
   const [buttonOn, setButtonOn] = useState(0);
   let noOfFiles = 1;
+  console.log(contract, account);
 
   const [formPopup, setformPopup] = useState(true);
   const [selectedFile, setSelectedFile] = useState();
@@ -285,7 +286,11 @@ function Profile({ contract, account, provider }) {
               //   </>
               // </div>
               <>
-                <PostDesignForm />
+                <PostDesignForm
+                  setButtonOn={setButtonOn}
+                  contract={contract}
+                  account={account}
+                />
               </>
             ) : (
               ""
