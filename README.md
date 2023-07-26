@@ -1,3 +1,6 @@
+<h3><i>The Recent COntract is deployed on polygon Mumbai so to check it Be on Polygon Mumbai</i></h3>
+
+
 <h1>🎨 ArtQuire 🚀
 </h1>
 
@@ -55,7 +58,16 @@ ArtQuire comprises eight key sections that serve various purposes:
 
 ![Screenshot 2023-06-18 182326](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/018ad50e-abcb-4735-a272-5752989bd448)
 
-![Screenshot 2023-06-18 181547](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/f9efdda6-0a05-4dec-971c-7a53e670c86d)
+![Screenshot 2023-07-26 211032](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/0221a0ef-c9c3-49db-b2ce-1452b5709630)
+
+![Screenshot 2023-07-26 211236](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/8bc78f83-b44b-438f-b9a1-4f6e94792f8a)
+
+![Screenshot 2023-07-26 211326](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/a7bf9234-2cdd-49a6-8010-927c4c735067)
+
+![Screenshot 2023-07-26 211546](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/311c8e35-2f39-40ea-84b4-de21652c33ae)
+
+![Screenshot 2023-07-26 211612](https://github.com/AdarshVMore/ArtAquire-SocialMedia-DApp/assets/103880462/748f87ff-c747-4751-addb-feae7238edf2)
+
 
 Each section is designed to provide unique experiences and functionalities, as indicated by their names.
 
