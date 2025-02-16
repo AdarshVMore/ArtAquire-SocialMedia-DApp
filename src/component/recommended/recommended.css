@@ -75,6 +75,7 @@
 
 .recommended-designs .popup-design {
   position: fixed;
+  overflow: scroll;
   z-index: 5;
   top: 18vh;
   /* left: 27vw; */
@@ -87,6 +88,10 @@
   gap: 2rem;
   width: 67vw;
   border: 0.5px solid rgba(255, 255, 255, 0.323);
+}
+
+.recommended-designs .popup-design:hover {
+  position: absolute;
 }
 
 .recommended-designs .popup-design .close {
@@ -132,11 +137,15 @@
 
 .recommended-designs .popup-design .img img {
   width: 100%;
-  max-height: 50vh;
+  /* max-height: 50vh; */
 }
 /* .recommended-designs .popup-design .img {
   width: 600px;
 } */
+.priceAndBtn {
+  display: flex;
+  gap: 1rem;
+}
 .recommended-designs .popup-design .buy {
   display: flex;
   flex-direction: column;
@@ -221,67 +230,4 @@
 .main-page .filter-post .active {
   color: black;
   background-color: #fff;
-}
-
-/* ==============================================   CAROUSEL  ===================================== */
-.carousel {
-  position: relative;
-  width: 300px;
-  margin: 0 auto;
-}
-
-.image-container {
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  /* height: 300px; } */
-}
-
-.image-container img {
-  width: 300px; /* Set the width of each image */
-  /* height: 300px; Set the height of each image */
-  object-fit: cover; /* Adjust the image to cover the container */
-  transition: transform 0.3s ease-in-out;
-}
-
-/* .image-container img.active {
-  transform: scale(); 
-} */
-
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.navigation button {
-  cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 18px;
-  border-radius: 5px;
-  outline: none;
-}
-
-.circles {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.circle.active {
-  background-color: #007bff;
 }

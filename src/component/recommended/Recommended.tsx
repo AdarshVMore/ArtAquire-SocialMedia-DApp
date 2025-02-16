@@ -42,78 +42,94 @@ function Recommended({ contract, account, provider }) {
   };
 
   const buyFile = async (cid, index) => {
-    const value = await allFiles[index].fileValue.toNumber();
-    const overrides = {
-      value: ethers.utils.parseEther(value.toString()),
-    };
-    console.log(cid, index, { value: value });
-    await contract.buyDesign(cid, index, overrides);
-    console.log("file Bought");
-    console.log(cid, index);
-    const sold = { cid: cid, index: index };
-    soldFiles.push(sold);
+    try {
+      const gasPriceInWei = "20000000000"; // Replace this with your desired gas price (20 Gwei in Wei)
+      const value = await allFiles[index].fileValue.toNumber();
+      const overrides = {
+        value: ethers.utils.parseEther(value.toString()),
+        gasPrice: gasPriceInWei, // Specify the gas price in the transaction overrides
+      };
+
+      console.log(cid, index, { value: value, gasPrice: gasPriceInWei });
+      await contract.buyDesign(cid, index, overrides);
+      console.log("File Bought");
+    } catch (error) {
+      console.error("Error in buyFile:", error);
+    }
   };
 
   useEffect(() => {
-    if (contract) {
-      const getImageFromIPFS = async () => {
-        console.log(contract);
-        console.log(provider);
+    const getImageFromIPFS = async () => {
+      try {
+        console.log(1);
+        if (contract) {
+          console.log(2);
 
-        designs = await contract.getAllDesigns();
-        console.log(designs);
-        if (designs) {
-          // setAllDesigns(designs);
-          const newArray = [];
+          console.log(contract);
+          console.log(provider);
 
-          for (let i = 0; i < designs.length; i++) {
-            if (isActive === 1) {
-              if (designs[i].PostType === "image") {
+          console.log("designs are ", await contract.getAllDesigns());
+
+          const designs = await contract.getAllDesigns(); // Ensure this returns a promise
+          console.log(designs);
+          console.log("hii");
+
+          if (designs) {
+            const newArray = [];
+
+            for (let i = 0; i < designs.length; i++) {
+              if (isActive === 1 && designs[i].PostType === "image") {
+                newArray.push(designs[i]);
+              } else if (isActive === 2 && designs[i].PostType === "video") {
+                newArray.push(designs[i]);
+              } else if (isActive === 3 && designs[i].PostType === "audio") {
                 newArray.push(designs[i]);
               }
             }
-            if (isActive === 2) {
-              if (designs[i].PostType === "video") {
-                newArray.push(designs[i]);
-              }
+
+            console.log(newArray);
+            setAllDesigns(newArray);
+
+            if (isActive === 0) {
+              setAllDesigns(designs);
             }
-            if (isActive === 3) {
-              if (designs[i].PostType === "audio") {
-                newArray.push(designs[i]);
-              }
-            }
+
+            console.log(allDesigns);
           }
-          setAllDesigns(newArray);
-
-          if (isActive === 0) {
-            setAllDesigns(designs);
-          }
-
-          console.log(allDesigns);
         }
-      };
+      } catch (error) {
+        console.error("Error fetching designs:", error);
+      }
+    };
 
+    const getProperty = async () => {
+      try {
+        const propertyInfo = await db.collection("User").get(); // Ensure this returns a promise
+        const pushThisArray = [];
+
+        console.log(propertyInfo.data);
+        for (let i = 0; i < propertyInfo.data.length; i++) {
+          pushThisArray.push(propertyInfo.data[i].data);
+          console.log(propertyInfo.data[i].data);
+        }
+
+        console.log(pushThisArray);
+        setUserInfo(pushThisArray);
+      } catch (error) {
+        console.error("Error fetching property info:", error);
+      }
+    };
+
+    if (contract) {
       getImageFromIPFS();
     }
 
-    const getProperty = async () => {
-      propertyInfo = await db.collection("User").get();
-      console.log(propertyInfo.data);
-      const pushThisArray = [];
-      for (let i = 0; i < propertyInfo.data.length; i++) {
-        pushThisArray.push(propertyInfo.data[i].data);
-        console.log(propertyInfo.data[i].data);
-      }
-      console.log(pushThisArray);
-      setUserInfo(pushThisArray);
-    };
-
     getProperty();
-    console.log(allDesigns);
-  }, [contract, designs, isActive]);
+  }, [contract, isActive]);
 
+  console.log(allDesigns);
   console.log(userInfo);
-
+  console.log(allDesigns);
   const viewProfile = async (param) => {
     for (let i = 0; i < userInfo.length; i++) {
       if (userInfo[i].address === param) {
@@ -156,20 +172,18 @@ function Recommended({ contract, account, provider }) {
   const [showProfile, setShowProfile] = useState(false);
 
   // ==========================   CAROUSEL LOGIC
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const handleNext = (images) => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const handlePrev = (images) => {
-    setCurrentIndex((prevIndex) =>
+  const goToPreviousSlide = () => {
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
-  const handleCircleClick = (index) => {
-    setCurrentIndex(index);
+  const goToNextSlide = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   return (
@@ -336,30 +350,15 @@ function Recommended({ contract, account, provider }) {
                       {allDesigns[popupIndex].PostType === "image" ? (
                         <div className="carousel">
                           <div className="image-container">
-                            {images.map((imageUrl, index) => (
+                            {images.map((image, index) => (
                               <img
                                 key={index}
-                                src={`https://${imageUrl}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
+                                src={`https://${image}.ipfs.nftstorage.link/#x-ipfs-companion-no-redirect`}
                                 alt={`Image ${index}`}
                                 className={
-                                  index === currentIndex ? "active" : ""
+                                  index === currentImageIndex ? "active" : ""
                                 }
                               />
-                            ))}
-                          </div>
-                          <div className="navigation">
-                            <button onClick={handlePrev}>&lt;</button>
-                            <button onClick={handleNext}>&gt;</button>
-                          </div>
-                          <div className="circles">
-                            {images.map((_, index) => (
-                              <div
-                                key={index}
-                                className={`circle ${
-                                  index === currentIndex ? "active" : ""
-                                }`}
-                                onClick={() => handleCircleClick(index)}
-                              ></div>
                             ))}
                           </div>
                         </div>
@@ -386,18 +385,32 @@ function Recommended({ contract, account, provider }) {
                       {allFiles.map((item, index) => (
                         <div className="buy-links">
                           <div className="view">
-                            <p>{item.fileName}</p>
-                            <p>{item.fileValue.toNumber()} FIL</p>
-                            <button
-                              onClick={() => {
-                                buyFile(
-                                  allDesigns[popupIndex].thumbnail,
-                                  index
-                                );
-                              }}
-                            >
-                              <FaEthereum size={20} /> Own
-                            </button>
+                            {/* Use the correct elements from the fileToBuy array */}
+                            <p>
+                              {allDesigns[popupIndex].fileToBuy[index * 4 + 2]}
+                            </p>{" "}
+                            {/* FileName */}
+                            <div className="priceAndBtn">
+                              {/* FilePrice */}
+                              <p>
+                                {
+                                  allDesigns[popupIndex].fileToBuy[
+                                    index * 4 + 3
+                                  ]
+                                }{" "}
+                                Matic
+                              </p>{" "}
+                              <button
+                                onClick={() => {
+                                  buyFile(
+                                    allDesigns[popupIndex].thumbnail,
+                                    index
+                                  );
+                                }}
+                              >
+                                <FaEthereum size={20} /> Own
+                              </button>
+                            </div>
                           </div>
                         </div>
                       ))}

@@ -11,10 +11,9 @@ function HomeNav({ contract, account }) {
   //   setIsConnected(true);
   // }
 
-  const formattedAccount =
-    account.length > 8
-      ? `${account.slice(0, 6)}...${account.slice(-4)}`
-      : account;
+  // const formattedAccount = account.length > 8
+  //     ? `${account.slice(0, 6)}...${account.slice(-4)}`
+  //     : account;
 
   return (
     <div className="home-nav">
